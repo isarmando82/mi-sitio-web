@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" role="img" aria-label="Ilustración de bienvenida">
+  <rect width="800" height="400" fill="#1f3a5f"/>
+  <circle cx="400" cy="180" r="90" fill="#f2c14e"/>
+  <text x="400" y="320" font-family="Arial, sans-serif" font-size="42" fill="#ffffff" text-anchor="middle">Bienvenido a mi sitio</text>
+</svg>

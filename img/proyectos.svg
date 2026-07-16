@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" role="img" aria-label="Ilustración de proyectos con tarjetas">
+  <rect width="800" height="400" fill="#023e8a"/>
+  <rect x="150" y="120" width="140" height="160" rx="10" fill="#90e0ef"/>
+  <rect x="330" y="120" width="140" height="160" rx="10" fill="#48cae4"/>
+  <rect x="510" y="120" width="140" height="160" rx="10" fill="#90e0ef"/>
+  <text x="400" y="330" font-family="Arial, sans-serif" font-size="40" fill="#ffffff" text-anchor="middle">Proyectos</text>
+</svg>
