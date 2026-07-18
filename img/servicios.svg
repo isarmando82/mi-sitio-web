@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" role="img" aria-label="Ilustración de servicios y habilidades">
+  <rect width="800" height="400" fill="#1f3a5f"/>
+  <circle cx="330" cy="200" r="70" fill="none" stroke="#f2a900" stroke-width="16"/>
+  <circle cx="330" cy="200" r="24" fill="#f5f7fa"/>
+  <circle cx="480" cy="150" r="45" fill="none" stroke="#a9c7e8" stroke-width="12"/>
+  <circle cx="480" cy="150" r="14" fill="#f5f7fa"/>
+  <circle cx="490" cy="270" r="38" fill="none" stroke="#4a7fb5" stroke-width="12"/>
+  <circle cx="490" cy="270" r="12" fill="#f5f7fa"/>
+</svg>

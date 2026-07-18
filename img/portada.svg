@@ -1,5 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" role="img" aria-label="Ilustración de bienvenida">
   <rect width="800" height="400" fill="#1f3a5f"/>
-  <circle cx="400" cy="180" r="90" fill="#f2c14e"/>
-  <text x="400" y="320" font-family="Arial, sans-serif" font-size="42" fill="#ffffff" text-anchor="middle">Bienvenido a mi sitio</text>
+  <circle cx="400" cy="170" r="80" fill="#f2a900"/>
+  <rect x="250" y="285" width="300" height="12" rx="6" fill="#4a7fb5"/>
+  <rect x="310" y="315" width="180" height="10" rx="5" fill="#a9c7e8"/>
+  <text x="400" y="180" font-family="Poppins, Arial, sans-serif" font-size="40" fill="#1f3a5f" text-anchor="middle" font-weight="bold">IA</text>
 </svg>

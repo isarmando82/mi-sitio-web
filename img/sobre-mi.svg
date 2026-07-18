@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" role="img" aria-label="Retrato ilustrado de perfil">
-  <rect width="800" height="400" fill="#5a189a"/>
-  <circle cx="400" cy="160" r="70" fill="#e0aaff"/>
-  <rect x="310" y="230" width="180" height="110" rx="90" fill="#e0aaff"/>
-  <text x="400" y="380" font-family="Arial, sans-serif" font-size="34" fill="#ffffff" text-anchor="middle">Sobre mí</text>
+  <rect width="800" height="400" fill="#4a7fb5"/>
+  <circle cx="400" cy="160" r="70" fill="#f5f7fa"/>
+  <path d="M300 340 a100 90 0 0 1 200 0 Z" fill="#f5f7fa"/>
+  <circle cx="400" cy="160" r="70" fill="none" stroke="#f2a900" stroke-width="6"/>
 </svg>
