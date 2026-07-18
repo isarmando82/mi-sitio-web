@@ -5,68 +5,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Proyectos realizados por Ismael Armando.">
   <title>Proyectos | Ismael Armando</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap">
+  <link rel="stylesheet" href="../styles/styles.css">
 </head>
-<body>
+<body class="pagina">
 
-  <header>
-    <a href="../index.html">
-      <img src="../img/logo.svg" alt="Logo de Ismael Armando" width="40" height="40">
+  <header class="encabezado">
+    <a class="marca" href="../index.html">
+      <img class="marca-logo" src="../img/logo.svg" alt="Logo de Ismael Armando" width="40" height="40">
+      <span class="marca-nombre">Ismael Armando</span>
     </a>
-    <p><strong>Ismael Armando</strong></p>
 
-    <nav aria-label="Navegación principal">
-      <ul>
-        <li><a href="../index.html">Inicio</a></li>
-        <li><a href="sobre-mi.html">Sobre mí</a></li>
-        <li><a href="proyectos.html">Proyectos</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
+    <nav class="navegacion" aria-label="Navegación principal">
+      <ul class="nav-lista">
+        <li><a class="nav-enlace" href="../index.html">Inicio</a></li>
+        <li><a class="nav-enlace" href="sobre-mi.html">Sobre mí</a></li>
+        <li><a class="nav-enlace" href="servicios.html">Servicios</a></li>
+        <li><a class="nav-enlace" href="proyectos.html">Proyectos</a></li>
+        <li><a class="nav-enlace" href="contacto.html">Contacto</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <section>
-      <h1>Proyectos</h1>
-      <p>
+  <main class="contenido">
+    <section class="seccion">
+      <h1 class="titulo-principal titulo-oscuro">Proyectos</h1>
+      <p class="texto texto-intro">
         Estos son algunos de los proyectos en los que trabajé mientras aprendía
         desarrollo web. Cada uno me ayudó a mejorar mis habilidades.
       </p>
 
-      <article>
-        <h2>Sitio web personal</h2>
-        <p>
-          Mi primer sitio construido con HTML5 semántico, enfocado en la estructura
-          y la accesibilidad.
+      <article class="tarjeta">
+        <h2 class="titulo-seccion">Sitio web personal</h2>
+        <p class="texto">
+          Mi primer sitio construido con HTML5 semántico y estilizado con CSS,
+          enfocado en la estructura y la accesibilidad.
         </p>
-        <h3>Tecnologías</h3>
-        <p>HTML5 y estructura semántica.</p>
+        <h3 class="subtitulo">Tecnologías</h3>
+        <p class="texto">HTML5, CSS y estructura semántica.</p>
       </article>
 
-      <article>
-        <h2>Lista de tareas</h2>
-        <p>
+      <article class="tarjeta">
+        <h2 class="titulo-seccion">Lista de tareas</h2>
+        <p class="texto">
           Una pequeña aplicación para organizar tareas diarias y practicar la
           manipulación del contenido de la página.
         </p>
-        <h3>Tecnologías</h3>
-        <p>HTML, CSS y nociones de JavaScript.</p>
+        <h3 class="subtitulo">Tecnologías</h3>
+        <p class="texto">HTML, CSS y nociones de JavaScript.</p>
       </article>
 
-      <figure>
-        <img src="../img/proyectos.svg" width="800" height="400"
-             alt="Ilustración de tres tarjetas de proyectos en tonos celestes sobre fondo azul y el texto Proyectos">
-        <figcaption>Representación visual de mis proyectos.</figcaption>
+      <figure class="figura">
+        <img class="figura-imagen" src="../img/proyectos.svg" width="800" height="400"
+             alt="Ilustración de tres tarjetas de proyectos con encabezados dorados y azules">
+        <figcaption class="figura-pie">Representación visual de mis proyectos.</figcaption>
       </figure>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Ismael Armando. Todos los derechos reservados.</p>
-    <nav aria-label="Redes sociales">
-      <ul>
-        <li><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="https://twitter.com/" target="_blank" rel="noopener">Twitter/X</a></li>
+  <footer class="pie">
+    <p class="pie-texto">&copy; 2026 Ismael Armando. Todos los derechos reservados.</p>
+    <nav class="navegacion" aria-label="Redes sociales">
+      <ul class="nav-lista nav-lista-redes">
+        <li><a class="nav-enlace" href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a class="nav-enlace" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a class="nav-enlace" href="https://twitter.com/" target="_blank" rel="noopener">Twitter/X</a></li>
       </ul>
     </nav>
   </footer>
