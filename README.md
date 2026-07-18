@@ -7,12 +7,11 @@ sin estilos visuales. Trabajo práctico del módulo de estructura HTML.
 
 ```
 mi-sitio-web/
-├── index.html          # Portada de bienvenida (con <h1>)
+├── index.html          # Página de inicio (con <h1>)
 ├── pages/
-│   ├── inicio.html     # Página de inicio
-│   ├── sobre-mi.html   # Biografía y habilidades
+│   ├── sobre-mi.html   # Biografía y habilidades (con <article>)
 │   ├── proyectos.html  # Proyectos (con <article>)
-│   └── contacto.html   # Medios de contacto
+│   └── contacto.html   # Medios de contacto (con <article>)
 ├── img/                # Imágenes representativas (.svg)
 └── README.md
 ```
@@ -21,6 +20,7 @@ mi-sitio-web/
 
 - Documento válido: `<!DOCTYPE html>`, `<html lang="es">`, `<head>` y `<body>`.
 - Etiquetas semánticas: `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<figure>`, `<footer>`.
+- `index.html` es directamente la página de inicio: sin duplicación ni idas y vueltas.
 - Jerarquía de encabezados sin saltos (`h1` → `h2` → `h3`).
 - Todas las imágenes con atributo `alt` descriptivo, dentro de `<figure>` con `<figcaption>`.
 - Validado sin errores con el [Validador W3C](https://validator.w3.org/).
