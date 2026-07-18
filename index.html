@@ -5,82 +5,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Sitio web personal de Ismael Armando: página de inicio.">
   <title>Inicio | Ismael Armando</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap">
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
-<body>
+<body class="pagina">
 
   <!-- Encabezado del sitio: marca + navegación principal -->
-  <header>
-    <a href="index.html">
-      <img src="img/logo.svg" alt="Logo de Ismael Armando" width="40" height="40">
+  <header class="encabezado">
+    <a class="marca" href="index.html">
+      <img class="marca-logo" src="img/logo.svg" alt="Logo de Ismael Armando" width="40" height="40">
+      <span class="marca-nombre">Ismael Armando</span>
     </a>
-    <p><strong>Ismael Armando</strong></p>
 
-    <nav aria-label="Navegación principal">
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="pages/sobre-mi.html">Sobre mí</a></li>
-        <li><a href="pages/proyectos.html">Proyectos</a></li>
-        <li><a href="pages/contacto.html">Contacto</a></li>
+    <nav class="navegacion" aria-label="Navegación principal">
+      <ul class="nav-lista">
+        <li><a class="nav-enlace" href="index.html">Inicio</a></li>
+        <li><a class="nav-enlace" href="pages/sobre-mi.html">Sobre mí</a></li>
+        <li><a class="nav-enlace" href="pages/servicios.html">Servicios</a></li>
+        <li><a class="nav-enlace" href="pages/proyectos.html">Proyectos</a></li>
+        <li><a class="nav-enlace" href="pages/contacto.html">Contacto</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- Contenido principal -->
-  <main>
+  <main class="contenido">
 
-    <!-- Sección de presentación -->
-    <section>
-      <h1>Hola, soy Ismael Armando</h1>
-      <p>
+    <!-- Sección de presentación destacada -->
+    <section class="seccion hero">
+      <h1 class="titulo-principal">Hola, soy Ismael Armando</h1>
+      <p class="texto texto-intro">
         Bienvenido a mi sitio web personal. Esta es la página de inicio: desde acá
-        podés conocer mi perfil, ver mis proyectos y encontrar cómo contactarme.
+        podés conocer mi perfil, mis servicios, mis proyectos y cómo contactarme.
       </p>
     </section>
 
-    <!-- Sección de biografía breve con contenido autocontenido en <article> -->
-    <section>
-      <h2>Biografía breve</h2>
-      <article>
-        <h3>Quién soy</h3>
-        <p>
+    <!-- Sección de biografía breve -->
+    <section class="seccion">
+      <h2 class="titulo-seccion">Biografía breve</h2>
+      <article class="tarjeta">
+        <h3 class="subtitulo">Quién soy</h3>
+        <p class="texto">
           Soy estudiante de desarrollo web y me apasiona construir páginas accesibles,
-          claras y bien estructuradas. Estoy dando mis primeros pasos con HTML semántico
+          claras y bien estructuradas. Estoy dando mis primeros pasos con HTML y CSS,
           y aprendo algo nuevo cada día.
         </p>
       </article>
     </section>
 
-    <!-- Sección de servicios / habilidades en lista -->
-    <section>
-      <h2>Habilidades</h2>
-      <ul>
+    <!-- Sección de habilidades en lista -->
+    <section class="seccion">
+      <h2 class="titulo-seccion">Habilidades</h2>
+      <ul class="lista">
         <li>Maquetado con HTML5 semántico</li>
+        <li>Estilos con CSS: cascada, especificidad y clases</li>
         <li>Fundamentos de accesibilidad web</li>
-        <li>Estructura y jerarquía de contenidos</li>
         <li>Control de versiones con Git y GitHub</li>
       </ul>
     </section>
 
     <!-- Imagen representativa dentro de figure -->
-    <section>
-      <h2>Una imagen de bienvenida</h2>
-      <figure>
-        <img src="img/portada.svg" width="800" height="400"
-             alt="Ilustración de bienvenida con un círculo dorado sobre fondo azul y el texto Bienvenido a mi sitio">
-        <figcaption>Ilustración de bienvenida de mi sitio web personal.</figcaption>
+    <section class="seccion">
+      <h2 class="titulo-seccion">Una imagen de bienvenida</h2>
+      <figure class="figura">
+        <img class="figura-imagen" src="img/portada.svg" width="800" height="400"
+             alt="Ilustración de bienvenida con un círculo dorado y las iniciales IA sobre fondo azul">
+        <figcaption class="figura-pie">Ilustración de bienvenida de mi sitio web personal.</figcaption>
       </figure>
     </section>
 
   </main>
 
   <!-- Pie de página: copyright + redes sociales -->
-  <footer>
-    <p>&copy; 2026 Ismael Armando. Todos los derechos reservados.</p>
-    <nav aria-label="Redes sociales">
-      <ul>
-        <li><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="https://twitter.com/" target="_blank" rel="noopener">Twitter/X</a></li>
+  <footer class="pie">
+    <p class="pie-texto">&copy; 2026 Ismael Armando. Todos los derechos reservados.</p>
+    <nav class="navegacion" aria-label="Redes sociales">
+      <ul class="nav-lista nav-lista-redes">
+        <li><a class="nav-enlace" href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a class="nav-enlace" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a class="nav-enlace" href="https://twitter.com/" target="_blank" rel="noopener">Twitter/X</a></li>
       </ul>
     </nav>
   </footer>

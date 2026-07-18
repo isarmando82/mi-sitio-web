@@ -1,7 +1,8 @@
 # Mi Sitio Web Personal
 
-Estructura base (esqueleto semántico) de un sitio web personal, hecho con **HTML5**
-sin estilos visuales. Trabajo práctico del módulo de estructura HTML.
+Sitio web personal construido con **HTML5 semántico** y estilizado con **CSS**
+(paleta de colores, tipografías de Google Fonts y jerarquía visual). Proyecto del
+curso de desarrollo web.
 
 ## Estructura del proyecto
 
@@ -9,9 +10,12 @@ sin estilos visuales. Trabajo práctico del módulo de estructura HTML.
 mi-sitio-web/
 ├── index.html          # Página de inicio (con <h1>)
 ├── pages/
-│   ├── sobre-mi.html   # Biografía y habilidades (con <article>)
-│   ├── proyectos.html  # Proyectos (con <article>)
-│   └── contacto.html   # Medios de contacto (con <article>)
+│   ├── sobre-mi.html   # Biografía y trayectoria
+│   ├── servicios.html  # Servicios y habilidades
+│   ├── proyectos.html  # Proyectos
+│   └── contacto.html   # Medios de contacto
+├── styles/
+│   └── styles.css      # Hoja de estilos externa
 ├── img/                # Imágenes representativas (.svg)
 └── README.md
 ```
@@ -20,10 +24,11 @@ mi-sitio-web/
 
 - Documento válido: `<!DOCTYPE html>`, `<html lang="es">`, `<head>` y `<body>`.
 - Etiquetas semánticas: `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<figure>`, `<footer>`.
-- `index.html` es directamente la página de inicio: sin duplicación ni idas y vueltas.
-- Jerarquía de encabezados sin saltos (`h1` → `h2` → `h3`).
-- Todas las imágenes con atributo `alt` descriptivo, dentro de `<figure>` con `<figcaption>`.
-- Validado sin errores con el [Validador W3C](https://validator.w3.org/).
+- Hoja de estilos externa vinculada con `<link>` en los 5 archivos (sin estilos en línea).
+- Estilos aplicados solo con **clases** (sin IDs y sin `!important`).
+- Paleta de 3 colores en HEX: primario `#1f3a5f`, secundario `#4a7fb5`, acento `#f2a900`.
+- Tipografías de Google Fonts: **Poppins** (títulos) y **Open Sans** (cuerpo), con fallback `sans-serif`.
+- Jerarquía visual clara y diseño adaptable a móviles.
 
 ## Cómo verlo
 
