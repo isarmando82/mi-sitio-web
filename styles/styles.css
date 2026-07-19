@@ -2,9 +2,17 @@
    Hoja de estilos - Sitio web personal de Ismael Armando
    Paleta: azul profesional + dorado
    Tipografías: Poppins (títulos) y Open Sans (cuerpo)
+   Layout: Flexbox + box model
    ============================================================ */
 
-/* ===== 1. Variables y paleta de colores ===== */
+/* ===== 1. Reset global (regla al inicio del CSS) ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== 2. Variables y paleta de colores ===== */
 :root {
   /* Colores (HEX) */
   --color-primario: #1f3a5f;    /* azul oscuro: encabezado, pie y títulos */
@@ -20,13 +28,6 @@
   --fuente-cuerpo: 'Open Sans', sans-serif;
 }
 
-/* ===== 2. Reset base ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 /* ===== 3. Base de página y tipografía ===== */
 .pagina {
   font-family: var(--fuente-cuerpo);
@@ -37,12 +38,13 @@
   background-color: var(--color-fondo);
 }
 
-/* ===== 4. Encabezado y navegación ===== */
+/* ===== 4. Encabezado y navegación (Flexbox) ===== */
+/* La navbar es un flex container: logo y enlaces en extremos opuestos */
 .encabezado {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+  align-items: center;              /* alineación vertical */
+  justify-content: space-between;   /* extremos opuestos */
   gap: 1rem;
   padding: 1rem 2rem;
   background-color: var(--color-primario);
@@ -67,9 +69,11 @@
   color: var(--color-texto-claro);
 }
 
+/* Contenedor de enlaces como flex container */
 .nav-lista {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 1.25rem;
   list-style: none;
 }
@@ -91,22 +95,30 @@
   border-bottom-color: var(--color-acento);
 }
 
-/* ===== 5. Contenido principal ===== */
+/* ===== 5. Contenido principal (Flexbox + gap) ===== */
+/* El contenedor principal organiza las secciones en columna */
 .contenido {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;                 /* espaciado uniforme entre secciones */
   max-width: 960px;
-  margin: 0 auto;
+  margin: 0 auto;              /* margen para centrar el contenido */
   padding: 2.5rem 1.5rem;
 }
 
+/* Cada sección es un flex container que ordena sus elementos internos */
 .seccion {
-  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;                /* espaciado uniforme entre elementos internos */
 }
 
 /* Sección de presentación destacada */
 .hero {
+  gap: 0.75rem;
+  padding: 3rem 2rem;          /* box model: separación interna amplia */
   background-color: var(--color-primario);
   color: var(--color-texto-claro);
-  padding: 3rem 2rem;
   border-radius: 12px;
   border-left: 6px solid var(--color-acento);
 }
@@ -117,7 +129,6 @@
   font-weight: 700;
   font-size: 2.6rem;
   line-height: 1.2;
-  margin-bottom: 1rem;
 }
 
 /* Variante para títulos principales sobre fondo claro (páginas internas) */
@@ -130,7 +141,6 @@
   font-weight: 600;
   font-size: 1.8rem;
   color: var(--color-primario);
-  margin-bottom: 1rem;
   padding-bottom: 0.4rem;
   border-bottom: 2px solid var(--color-acento);
 }
@@ -140,12 +150,10 @@
   font-weight: 600;
   font-size: 1.2rem;
   color: var(--color-secundario);
-  margin-bottom: 0.5rem;
 }
 
 .texto {
   font-size: 1rem;
-  margin-bottom: 1rem;
 }
 
 .texto-intro {
@@ -155,7 +163,6 @@
 /* Listas de contenido (habilidades, servicios, contacto) */
 .lista {
   list-style: none;
-  margin-bottom: 1rem;
 }
 
 .lista li {
@@ -184,21 +191,19 @@
   text-decoration: underline;
 }
 
-/* ===== 7. Tarjetas y artículos ===== */
+/* ===== 7. Tarjetas y artículos (Flexbox + box model) ===== */
 .tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;                 /* espaciado uniforme entre elementos internos */
+  padding: 1.5rem;             /* box model: 24px, el contenido no pega a los bordes */
   background-color: var(--color-superficie);
   border: 1px solid #e2e8f0;
   border-radius: 10px;
-  padding: 1.5rem;
-  margin-bottom: 1.25rem;
   box-shadow: 0 2px 8px rgba(31, 58, 95, 0.08);
 }
 
 /* ===== 8. Figuras e imágenes ===== */
-.figura {
-  margin-top: 1.5rem;
-}
-
 .figura-imagen {
   display: block;
   width: 100%;
@@ -215,17 +220,17 @@
   text-align: center;
 }
 
-/* ===== 9. Pie de página ===== */
+/* ===== 9. Pie de página (Flexbox) ===== */
 .pie {
-  background-color: var(--color-primario);
-  color: var(--color-texto-claro);
-  border-top: 4px solid var(--color-acento);
-  padding: 1.5rem 2rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  padding: 1.5rem 2rem;
+  background-color: var(--color-primario);
+  color: var(--color-texto-claro);
+  border-top: 4px solid var(--color-acento);
 }
 
 .pie-texto {
