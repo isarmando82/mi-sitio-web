@@ -29,13 +29,30 @@
     </nav>
   </header>
 
-  <main class="contenido">
-    <section class="seccion">
+  <!-- Contenido principal: grid container con áreas nombradas.
+       En celular: intro, proyectos y figura apilados.
+       En escritorio: intro y figura arriba, grilla de proyectos abajo. -->
+  <main class="contenido grilla-proyectos-pagina">
+
+    <!-- Presentación de la página (área del grid: intro) -->
+    <section class="seccion area-intro">
       <h1 class="titulo-principal titulo-oscuro">Proyectos</h1>
       <p class="texto texto-intro">
         Estos son algunos de los proyectos en los que trabajé mientras aprendía
         desarrollo web. Cada uno me ayudó a mejorar mis habilidades.
       </p>
+    </section>
+
+    <!-- Imagen representativa dentro de figure (área del grid: figura) -->
+    <figure class="figura area-figura">
+      <img class="figura-imagen" src="../img/proyectos.svg" width="800" height="400"
+           alt="Ilustración de tres tarjetas de proyectos con encabezados dorados y azules">
+      <figcaption class="figura-pie">Representación visual de mis proyectos.</figcaption>
+    </figure>
+
+    <!-- Grilla de tarjetas (área del grid: proyectos).
+         Es un grid anidado: 1 columna en celular, 2 en tablet y 3 en escritorio. -->
+    <div class="grilla-tarjetas area-proyectos">
 
       <article class="tarjeta">
         <h2 class="titulo-seccion">Sitio web personal</h2>
@@ -43,8 +60,10 @@
           Mi primer sitio construido con HTML5 semántico y estilizado con CSS,
           enfocado en la estructura y la accesibilidad.
         </p>
-        <h3 class="subtitulo">Tecnologías</h3>
-        <p class="texto">HTML5, CSS y estructura semántica.</p>
+        <div class="tarjeta-pie">
+          <h3 class="subtitulo">Tecnologías</h3>
+          <p class="texto">HTML5, CSS y estructura semántica.</p>
+        </div>
       </article>
 
       <article class="tarjeta">
@@ -53,16 +72,26 @@
           Una pequeña aplicación para organizar tareas diarias y practicar la
           manipulación del contenido de la página.
         </p>
-        <h3 class="subtitulo">Tecnologías</h3>
-        <p class="texto">HTML, CSS y nociones de JavaScript.</p>
+        <div class="tarjeta-pie">
+          <h3 class="subtitulo">Tecnologías</h3>
+          <p class="texto">HTML, CSS y nociones de JavaScript.</p>
+        </div>
       </article>
 
-      <figure class="figura">
-        <img class="figura-imagen" src="../img/proyectos.svg" width="800" height="400"
-             alt="Ilustración de tres tarjetas de proyectos con encabezados dorados y azules">
-        <figcaption class="figura-pie">Representación visual de mis proyectos.</figcaption>
-      </figure>
-    </section>
+      <article class="tarjeta">
+        <h2 class="titulo-seccion">Maquetación responsive</h2>
+        <p class="texto">
+          Rediseño de este mismo sitio con una grilla maestra y diseño
+          mobile-first, para que se adapte a celular, tablet y escritorio.
+        </p>
+        <div class="tarjeta-pie">
+          <h3 class="subtitulo">Tecnologías</h3>
+          <p class="texto">CSS Grid, Flexbox y media queries.</p>
+        </div>
+      </article>
+
+    </div>
+
   </main>
 
   <footer class="pie">
