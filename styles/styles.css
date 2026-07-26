@@ -2,7 +2,12 @@
    Hoja de estilos - Sitio web personal de Ismael Armando
    Paleta: azul profesional + dorado
    Tipografías: Poppins (títulos) y Open Sans (cuerpo)
-   Layout: Flexbox + box model
+   Layout: CSS Grid (estructura maestra) + Flexbox (componentes)
+
+   ESTRATEGIA: MOBILE-FIRST
+   Todo lo que está antes de la sección 11 es el diseño base para
+   celular: una sola columna, secciones apiladas al 100% del ancho.
+   La complejidad se suma después, con media queries de min-width.
    ============================================================ */
 
 /* ===== 1. Reset global (regla al inicio del CSS) ===== */
@@ -22,13 +27,19 @@
   --color-superficie: #ffffff;  /* fondo de tarjetas */
   --color-texto: #1c2733;       /* texto principal */
   --color-texto-claro: #ffffff; /* texto sobre fondos oscuros */
+  --color-borde: #e2e8f0;       /* borde suave de tarjetas */
 
   /* Tipografías (siempre con fuente genérica de respaldo) */
   --fuente-titulos: 'Poppins', sans-serif;
   --fuente-cuerpo: 'Open Sans', sans-serif;
+
+  /* Espaciados reutilizables para gap y padding */
+  --espacio-chico: 0.75rem;
+  --espacio-medio: 1.5rem;
+  --espacio-grande: 2.5rem;
 }
 
-/* ===== 3. Base de página y tipografía ===== */
+/* ===== 3. Base de página y tipografía (mobile) ===== */
 .pagina {
   font-family: var(--fuente-cuerpo);
   font-weight: 400;
@@ -38,15 +49,15 @@
   background-color: var(--color-fondo);
 }
 
-/* ===== 4. Encabezado y navegación (Flexbox) ===== */
-/* La navbar es un flex container: logo y enlaces en extremos opuestos */
+/* ===== 4. Encabezado y navegación (Flexbox) =====
+   En celular la marca y el menú se apilan en columna.
+   A partir de 768px pasan a los extremos opuestos (ver sección 11). */
 .encabezado {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;              /* alineación vertical */
-  justify-content: space-between;   /* extremos opuestos */
-  gap: 1rem;
-  padding: 1rem 2rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--espacio-chico);
+  padding: 1rem;
   background-color: var(--color-primario);
   border-bottom: 4px solid var(--color-acento);
 }
@@ -69,12 +80,12 @@
   color: var(--color-texto-claro);
 }
 
-/* Contenedor de enlaces como flex container */
+/* Contenedor de enlaces como flex container, con gap para el espaciado */
 .nav-lista {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1rem;
   list-style: none;
 }
 
@@ -95,16 +106,45 @@
   border-bottom-color: var(--color-acento);
 }
 
-/* ===== 5. Contenido principal (Flexbox + gap) ===== */
-/* El contenedor principal organiza las secciones en columna */
+/* ===== 5. Contenedor principal: GRID MAESTRO (mobile) =====
+   El <main> es el grid container de todo el sitio.
+   En celular arranca con una sola columna de ancho flexible (1fr),
+   así cada sección ocupa el 100% del ancho disponible. */
 .contenido {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;                 /* espaciado uniforme entre secciones */
-  max-width: 960px;
-  margin: 0 auto;              /* margen para centrar el contenido */
-  padding: 2.5rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;  /* unidad fr: la columna se adapta, no es rígida */
+  gap: var(--espacio-grande);  /* espaciado uniforme entre áreas del grid */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;              /* centra el contenido en pantallas grandes */
+  padding: 2rem 1rem;
 }
+
+/* --- Grid con áreas nombradas: página de inicio ---
+   En mobile todas las áreas van una debajo de la otra. */
+.grilla-inicio {
+  grid-template-areas:
+    "hero"
+    "bio"
+    "skills"
+    "figura";
+}
+
+/* --- Grid con áreas nombradas: página de proyectos --- */
+.grilla-proyectos-pagina {
+  grid-template-areas:
+    "intro"
+    "proyectos"
+    "figura";
+}
+
+/* Asignación de cada bloque a su área del grid */
+.area-hero      { grid-area: hero; }
+.area-bio       { grid-area: bio; }
+.area-skills    { grid-area: skills; }
+.area-figura    { grid-area: figura; }
+.area-intro     { grid-area: intro; }
+.area-proyectos { grid-area: proyectos; }
 
 /* Cada sección es un flex container que ordena sus elementos internos */
 .seccion {
@@ -115,19 +155,45 @@
 
 /* Sección de presentación destacada */
 .hero {
-  gap: 0.75rem;
-  padding: 3rem 2rem;          /* box model: separación interna amplia */
+  gap: var(--espacio-chico);
+  padding: 2rem 1.5rem;        /* box model: separación interna */
   background-color: var(--color-primario);
   color: var(--color-texto-claro);
   border-radius: 12px;
   border-left: 6px solid var(--color-acento);
 }
 
-/* ===== 6. Tipografía de títulos y textos ===== */
+/* ===== 6. Grillas internas de tarjetas =====
+   Estas grillas anidadas arrancan en 1 columna (mobile) y crecen
+   en los breakpoints. Siempre con fr, nunca con anchos fijos en px. */
+.grilla-tarjetas {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--espacio-medio);   /* gap entre tarjetas del grid */
+  align-items: stretch;        /* las tarjetas de una fila quedan parejas */
+}
+
+/* Dos columnas iguales (servicios) */
+.grilla-dos-iguales {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--espacio-medio);
+  align-items: stretch;
+}
+
+/* Contenido principal + figura de apoyo (sobre mí, contacto) */
+.grilla-dos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--espacio-medio);
+  align-items: start;
+}
+
+/* ===== 7. Tipografía de títulos y textos (mobile) ===== */
 .titulo-principal {
   font-family: var(--fuente-titulos);
   font-weight: 700;
-  font-size: 2.6rem;
+  font-size: 2rem;
   line-height: 1.2;
 }
 
@@ -139,7 +205,7 @@
 .titulo-seccion {
   font-family: var(--fuente-titulos);
   font-weight: 600;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   color: var(--color-primario);
   padding-bottom: 0.4rem;
   border-bottom: 2px solid var(--color-acento);
@@ -148,7 +214,7 @@
 .subtitulo {
   font-family: var(--fuente-titulos);
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--color-secundario);
 }
 
@@ -157,7 +223,7 @@
 }
 
 .texto-intro {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
 }
 
 /* Listas de contenido (habilidades, servicios, contacto) */
@@ -191,22 +257,37 @@
   text-decoration: underline;
 }
 
-/* ===== 7. Tarjetas y artículos (Flexbox + box model) ===== */
+/* ===== 8. Tarjetas y artículos (Flexbox + box model) ===== */
 .tarjeta {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;                 /* espaciado uniforme entre elementos internos */
-  padding: 1.5rem;             /* box model: 24px, el contenido no pega a los bordes */
+  padding: var(--espacio-medio);
   background-color: var(--color-superficie);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-borde);
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(31, 58, 95, 0.08);
+  height: 100%;                /* todas las tarjetas de una fila quedan parejas */
 }
 
-/* ===== 8. Figuras e imágenes ===== */
+/* Dentro de una tarjeta el título va más chico que el de una sección */
+.tarjeta .titulo-seccion {
+  font-size: 1.2rem;
+}
+
+/* Empuja el bloque de tecnologías al pie de la tarjeta */
+.tarjeta-pie {
+  margin-top: auto;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--color-borde);
+  font-size: 0.9rem;
+  color: var(--color-secundario);
+}
+
+/* ===== 9. Figuras e imágenes ===== */
 .figura-imagen {
   display: block;
-  width: 100%;
+  width: 100%;                 /* la imagen nunca desborda el ancho del celular */
   height: auto;
   border-radius: 10px;
   border: 3px solid var(--color-primario);
@@ -220,14 +301,14 @@
   text-align: center;
 }
 
-/* ===== 9. Pie de página (Flexbox) ===== */
+/* ===== 10. Pie de página (Flexbox) =====
+   En celular se apila; a partir de 768px va a los extremos. */
 .pie {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 1rem;
-  padding: 1.5rem 2rem;
+  padding: var(--espacio-medio) 1rem;
   background-color: var(--color-primario);
   color: var(--color-texto-claro);
   border-top: 4px solid var(--color-acento);
@@ -237,27 +318,128 @@
   font-size: 0.9rem;
 }
 
-.nav-lista-redes {
-  gap: 1rem;
-}
+/* ============================================================
+   ===== 11. ESCALERA RESPONSIVA (MOBILE-FIRST) =====
+   De acá en adelante solo se SUMA complejidad con min-width.
+   Breakpoint 1: 768px  -> tablet
+   Breakpoint 2: 1024px -> escritorio
+   ============================================================ */
 
-/* ===== 10. Responsive (pantallas chicas) ===== */
-@media (max-width: 640px) {
+/* ---------- BREAKPOINT 1: TABLET (a partir de 768px) ---------- */
+@media (min-width: 768px) {
+
+  /* La barra superior pasa de columna a fila, con marca y menú
+     en extremos opuestos */
   .encabezado {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .titulo-principal {
-    font-size: 2rem;
-  }
-
-  .contenido {
-    padding: 2rem 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
   }
 
   .pie {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--espacio-medio) 2rem;
+  }
+
+  .contenido {
+    padding: var(--espacio-grande) var(--espacio-medio);
+  }
+
+  /* Inicio: el grid pasa a 2 columnas flexibles.
+     Habilidades y figura se acomodan lado a lado. */
+  .grilla-inicio {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "hero   hero"
+      "bio    bio"
+      "skills figura";
+  }
+
+  /* Proyectos: las tarjetas pasan a 2 columnas */
+  .grilla-tarjetas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Páginas internas: dos columnas (progreso de estilos) */
+  .grilla-dos-iguales {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grilla-dos {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .hero {
+    padding: 2.5rem 2rem;
+  }
+
+  .titulo-principal {
+    font-size: 2.2rem;
+  }
+
+  .titulo-seccion {
+    font-size: 1.6rem;
+  }
+}
+
+/* ---------- BREAKPOINT 2: ESCRITORIO (a partir de 1024px) ---------- */
+@media (min-width: 1024px) {
+
+  .contenido {
+    padding: 3rem 2rem;
+  }
+
+  /* Inicio: layout maestro definitivo.
+     Hero a todo el ancho, biografía y habilidades lado a lado
+     (la biografía recibe más espacio con 2fr) y figura abajo. */
+  .grilla-inicio {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+      "hero   hero"
+      "bio    skills"
+      "figura figura";
+  }
+
+  /* Proyectos: la intro y la figura conviven arriba,
+     y la grilla de tarjetas ocupa todo el ancho abajo. */
+  .grilla-proyectos-pagina {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+      "intro     figura"
+      "proyectos proyectos";
+  }
+
+  /* Las tarjetas de proyecto se abren a 3 columnas */
+  .grilla-tarjetas {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--espacio-grande);
+  }
+
+  .hero {
+    padding: 3rem 2.5rem;
+  }
+
+  .titulo-principal {
+    font-size: 2.6rem;
+  }
+
+  .titulo-seccion {
+    font-size: 1.8rem;
+  }
+
+  .texto-intro {
+    font-size: 1.15rem;
+  }
+
+  /* En inicio la figura ocupa toda la fila: la limitamos a su tamaño
+     natural y la centramos para que no se agrande de más */
+  .grilla-inicio .area-figura .figura-imagen {
+    max-width: 800px;
+    margin: 0 auto;
   }
 }
