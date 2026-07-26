@@ -30,11 +30,13 @@
     </nav>
   </header>
 
-  <!-- Contenido principal -->
-  <main class="contenido">
+  <!-- Contenido principal: es el GRID CONTAINER del layout maestro.
+       Las áreas se definen con grid-template-areas en styles.css:
+       en celular van apiladas y se reordenan en tablet y escritorio. -->
+  <main class="contenido grilla-inicio">
 
-    <!-- Sección de presentación destacada -->
-    <section class="seccion hero">
+    <!-- Sección de presentación destacada (área del grid: hero) -->
+    <section class="seccion hero area-hero">
       <h1 class="titulo-principal">Hola, soy Ismael Armando</h1>
       <p class="texto texto-intro">
         Bienvenido a mi sitio web personal. Esta es la página de inicio: desde acá
@@ -42,8 +44,8 @@
       </p>
     </section>
 
-    <!-- Sección de biografía breve -->
-    <section class="seccion">
+    <!-- Sección de biografía breve (área del grid: bio) -->
+    <section class="seccion area-bio">
       <h2 class="titulo-seccion">Biografía breve</h2>
       <article class="tarjeta">
         <h3 class="subtitulo">Quién soy</h3>
@@ -55,8 +57,8 @@
       </article>
     </section>
 
-    <!-- Sección de habilidades en lista -->
-    <section class="seccion">
+    <!-- Sección de habilidades en lista (área del grid: skills) -->
+    <section class="seccion area-skills">
       <h2 class="titulo-seccion">Habilidades</h2>
       <ul class="lista">
         <li>Maquetado con HTML5 semántico</li>
@@ -66,8 +68,8 @@
       </ul>
     </section>
 
-    <!-- Imagen representativa dentro de figure -->
-    <section class="seccion">
+    <!-- Imagen representativa dentro de figure (área del grid: figura) -->
+    <section class="seccion area-figura">
       <h2 class="titulo-seccion">Una imagen de bienvenida</h2>
       <figure class="figura">
         <img class="figura-imagen" src="img/portada.svg" width="800" height="400"
