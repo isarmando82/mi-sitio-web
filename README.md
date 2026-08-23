@@ -42,8 +42,8 @@ mi-sitio-web/
 - **Grid container**: el `<main>` de `index.html` y de `pages/proyectos.html`
   usa `display: grid`.
 - **Áreas nombradas**: el layout se define con `grid-template-areas`
-  (`hero`, `bio`, `skills`, `figura` en inicio; `intro`, `proyectos`, `figura`
-  en proyectos) y cada bloque se ubica con `grid-area`.
+  (`hero`, `bio`, `skills`, `galeria`, `figura` en inicio; `intro`, `proyectos`,
+  `figura` en proyectos) y cada bloque se ubica con `grid-area`.
 - **Diseño fluido**: las columnas se definen con la unidad `fr`
   (`1fr`, `1fr 1fr`, `2fr 1fr`, `repeat(3, 1fr)`), nunca con anchos fijos en px.
 - **Escalera responsiva** con dos breakpoints de `min-width`:
@@ -58,6 +58,50 @@ mi-sitio-web/
 - **Progreso en el resto de las páginas**: `sobre-mi.html`, `servicios.html` y
   `contacto.html` también incorporan grids de dos columnas a partir de 768px.
 
+## Integración de Bootstrap y estados interactivos
+
+Bootstrap 5.3.3 se integra **por CDN** en los 5 archivos HTML: el CSS en el
+`<head>` (siempre **antes** de `styles/styles.css`, para que la hoja propia
+tenga la última palabra) y el JS `bootstrap.bundle.min.js` **antes de cerrar
+el `</body>`**.
+
+### Navbar responsivo
+
+Los 5 archivos usan la misma `navbar navbar-expand-lg`: en escritorio los
+enlaces se ven en línea y por debajo de **992px (breakpoint `lg`)** colapsan en
+el **menú hamburguesa** (`navbar-toggler` + `collapse navbar-collapse`).
+
+### Componentes por página
+
+| Archivo | Componentes de Bootstrap |
+|---|---|
+| `index.html` | Navbar · **Carousel** (galería de 3 imágenes con indicadores y controles) · **Accordion** de habilidades · Botones `.btn` |
+| `pages/proyectos.html` | Navbar · **Carousel** · **Cards** con el **grid system** (`row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4`) · **Badges** · **Modales** de detalle |
+| `pages/sobre-mi.html` | Navbar · **List group** · Botón |
+| `pages/servicios.html` | Navbar · **List group** · **Badges** · Botones |
+| `pages/contacto.html` | Navbar · **Alert** · **Formulario** (`form-control`, `form-label`) · Botón |
+
+### Estilos propios sobre el framework
+
+Ningún componente queda con la estética por defecto de Bootstrap: la sección 12
+de `styles.css` repinta navbar, carousel, accordion, cards, badges, modales,
+list-group, alert y formulario con la paleta del sitio (azul `#1f3a5f`,
+azul medio `#4a7fb5` y dorado `#f2a900`) y las tipografías Poppins / Open Sans.
+Incluso el ícono de la hamburguesa y la flecha del accordion se redibujan en
+dorado.
+
+### Estados interactivos con pseudoclases
+
+La sección 13 de `styles.css` aplica `:hover`, `:focus` y `:active` a **todos
+los elementos clicables** del sitio —enlaces del navbar, marca, botón
+hamburguesa, botones, controles e indicadores del carousel, accordion, tarjetas,
+ítems del list-group, campos del formulario y enlaces del pie—, siempre
+acompañados de `transition` para que el cambio sea suave. Como viven en la hoja
+de estilos compartida, se ven en los 5 archivos HTML. Además se usa
+`:focus-visible` para que quien navega con el teclado vea siempre dónde está
+parado.
+
 ## Cómo verlo
 
 Abrí `index.html` en tu navegador y navegá con el menú superior.
+Para ver el menú hamburguesa, achicá la ventana por debajo de los 992px.
