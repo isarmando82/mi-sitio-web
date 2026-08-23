@@ -49,15 +49,12 @@
   background-color: var(--color-fondo);
 }
 
-/* ===== 4. Encabezado y navegación (Flexbox) =====
-   En celular la marca y el menú se apilan en columna.
-   A partir de 768px pasan a los extremos opuestos (ver sección 11). */
-.encabezado {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--espacio-chico);
-  padding: 1rem;
+/* ===== 4. Encabezado y navegación =====
+   La barra superior es el NAVBAR DE BOOTSTRAP (navbar-expand-lg): colapsa
+   en menú hamburguesa por debajo de 992px. Acá solo lo repintamos con la
+   paleta propia; el comportamiento lo aporta el framework.
+   Los estilos detallados del navbar están en la sección 12. */
+.encabezado-sitio {
   background-color: var(--color-primario);
   border-bottom: 4px solid var(--color-acento);
 }
@@ -127,6 +124,7 @@
     "hero"
     "bio"
     "skills"
+    "galeria"
     "figura";
 }
 
@@ -145,6 +143,7 @@
 .area-figura    { grid-area: figura; }
 .area-intro     { grid-area: intro; }
 .area-proyectos { grid-area: proyectos; }
+.area-galeria   { grid-area: galeria; }
 
 /* Cada sección es un flex container que ordena sus elementos internos */
 .seccion {
@@ -328,16 +327,6 @@
 /* ---------- BREAKPOINT 1: TABLET (a partir de 768px) ---------- */
 @media (min-width: 768px) {
 
-  /* La barra superior pasa de columna a fila, con marca y menú
-     en extremos opuestos */
-  .encabezado {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-  }
-
   .pie {
     flex-direction: row;
     flex-wrap: wrap;
@@ -355,9 +344,10 @@
   .grilla-inicio {
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
-      "hero   hero"
-      "bio    bio"
-      "skills figura";
+      "hero    hero"
+      "bio     bio"
+      "skills  figura"
+      "galeria galeria";
   }
 
   /* Proyectos: las tarjetas pasan a 2 columnas */
@@ -400,9 +390,10 @@
   .grilla-inicio {
     grid-template-columns: 2fr 1fr;
     grid-template-areas:
-      "hero   hero"
-      "bio    skills"
-      "figura figura";
+      "hero    hero"
+      "bio     skills"
+      "galeria galeria"
+      "figura  figura";
   }
 
   /* Proyectos: la intro y la figura conviven arriba,
@@ -441,5 +432,525 @@
   .grilla-inicio .area-figura .figura-imagen {
     max-width: 800px;
     margin: 0 auto;
+  }
+}
+
+/* ============================================================
+   ===== 12. COMPONENTES DE BOOTSTRAP CON LA PALETA PROPIA =====
+   Bootstrap se carga por CDN ANTES de esta hoja, así que todo lo
+   que se escribe acá pisa los estilos del framework y mantiene la
+   identidad del sitio (azul #1f3a5f + dorado #f2a900).
+   ============================================================ */
+
+/* ---------- 12.1 Navbar (navbar-expand-lg: hamburguesa < 992px) ---------- */
+.navbar-personal {
+  padding: 0.75rem 1rem;
+  background-color: var(--color-primario);
+}
+
+.navbar-personal .navbar-brand {
+  padding: 0;
+}
+
+.navbar-personal .navbar-nav .nav-link {
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-texto-claro);
+  padding: 0.4rem 0.75rem;
+  border-bottom: 2px solid transparent;
+  /* transition: suaviza el cambio de los estados interactivos */
+  transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+/* Estado activo: marca en qué página estamos */
+.navbar-personal .navbar-nav .nav-link.active {
+  color: var(--color-acento);
+  border-bottom-color: var(--color-acento);
+}
+
+/* Botón hamburguesa */
+.navbar-personal .navbar-toggler {
+  border: 2px solid var(--color-acento);
+  padding: 0.4rem 0.6rem;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
+}
+
+.navbar-personal .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23f2a900' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* En celular el menú desplegado necesita un poco de aire */
+.navbar-personal .navbar-collapse {
+  padding-top: 0.5rem;
+}
+
+/* ---------- 12.2 Botones (.btn de Bootstrap, repintados) ---------- */
+.hero-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-chico);
+  margin-top: 0.5rem;
+}
+
+.btn-acento,
+.btn-contorno {
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.5rem 1.2rem;
+  transition: background-color 0.25s ease, border-color 0.25s ease,
+              color 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
+}
+
+.btn-acento {
+  color: var(--color-texto);
+  background-color: var(--color-acento);
+  border: 2px solid var(--color-acento);
+}
+
+.btn-contorno {
+  color: var(--color-texto-claro);
+  background-color: transparent;
+  border: 2px solid var(--color-texto-claro);
+}
+
+/* Variante para fondos claros (modales, páginas internas) */
+.btn-contorno.btn-oscuro {
+  color: var(--color-primario);
+  border-color: var(--color-primario);
+}
+
+/* ---------- 12.3 Carousel de la galería ---------- */
+.carrusel-personal {
+  border: 3px solid var(--color-primario);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(31, 58, 95, 0.15);
+}
+
+.carrusel-personal .carousel-item img {
+  width: 100%;
+  height: auto;
+}
+
+.carrusel-personal .carousel-control-prev-icon,
+.carrusel-personal .carousel-control-next-icon {
+  background-color: var(--color-primario);
+  border: 2px solid var(--color-acento);
+  border-radius: 50%;
+  padding: 1.1rem;
+  background-size: 45% 45%;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.carrusel-personal .carousel-indicators [data-bs-target] {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--color-primario);
+  background-color: var(--color-superficie);
+  opacity: 0.65;
+  transition: background-color 0.25s ease, opacity 0.25s ease, transform 0.2s ease;
+}
+
+.carrusel-personal .carousel-indicators .active {
+  background-color: var(--color-acento);
+  opacity: 1;
+}
+
+.carrusel-personal .carousel-caption {
+  background-color: rgba(31, 58, 95, 0.8);
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+}
+
+.carrusel-titulo {
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--color-acento);
+}
+
+.carrusel-texto {
+  font-size: 0.95rem;
+  color: var(--color-texto-claro);
+}
+
+/* ---------- 12.4 Accordion de habilidades ---------- */
+.acordeon-personal .accordion-item {
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+}
+
+.acordeon-personal .accordion-button {
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  color: var(--color-primario);
+  background-color: var(--color-superficie);
+  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.acordeon-personal .accordion-button:not(.collapsed) {
+  color: var(--color-texto-claro);
+  background-color: var(--color-primario);
+  box-shadow: none;
+}
+
+/* La flechita también sigue la paleta */
+.acordeon-personal .accordion-button::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%231f3a5f'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.acordeon-personal .accordion-button:not(.collapsed)::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23f2a900'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+/* ---------- 12.5 Cards, badges y modales (página de proyectos) ---------- */
+.fila-proyectos {
+  margin-top: var(--espacio-medio);
+}
+
+.tarjeta-bs {
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(31, 58, 95, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.tarjeta-bs .card-img-top {
+  border-bottom: 3px solid var(--color-acento);
+}
+
+.tarjeta-bs .card-title {
+  font-size: 1.2rem;
+}
+
+.tarjeta-bs .card-footer {
+  background-color: transparent;
+  border-top: 1px solid var(--color-borde);
+}
+
+.insignia {
+  display: inline-block;
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: var(--color-primario);
+  background-color: #ffe9bd;
+  border: 1px solid var(--color-acento);
+  border-radius: 999px;
+  padding: 0.35em 0.75em;
+  margin: 0.3rem 0.2rem 0 0;
+}
+
+.modal-personal .modal-content {
+  border: none;
+  border-top: 6px solid var(--color-acento);
+  border-radius: 12px;
+}
+
+.modal-personal .modal-header {
+  background-color: var(--color-primario);
+}
+
+.modal-personal .modal-title {
+  color: var(--color-acento);
+}
+
+.modal-personal .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* ---------- 12.6 List-group, alert y formulario ---------- */
+.lista-personal .list-group-item {
+  color: var(--color-texto);
+  border-color: var(--color-borde);
+  transition: background-color 0.25s ease, color 0.25s ease, padding-left 0.25s ease;
+}
+
+.aviso-personal {
+  color: var(--color-texto);
+  background-color: #fff6e0;
+  border: 1px solid var(--color-acento);
+  border-left: 6px solid var(--color-acento);
+  border-radius: 8px;
+}
+
+.formulario-personal .form-label {
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  color: var(--color-primario);
+}
+
+.formulario-personal .form-control {
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* ============================================================
+   ===== 13. ESTADOS INTERACTIVOS CON PSEUDOCLASES =====
+   :hover  -> el mouse pasa por encima
+   :focus  -> el elemento recibe el foco (teclado / Tab)
+   :active -> el instante en que se hace clic
+   Todos los elementos clicables del sitio los tienen, y siempre
+   con transition para que el cambio sea suave.
+   ============================================================ */
+
+/* ---------- 13.1 Enlaces del navbar ---------- */
+.navbar-personal .navbar-nav .nav-link:hover,
+.navbar-personal .navbar-nav .nav-link:focus {
+  color: var(--color-acento);
+  border-bottom-color: var(--color-acento);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.navbar-personal .navbar-nav .nav-link:active {
+  color: var(--color-texto-claro);
+  background-color: var(--color-secundario);
+  border-bottom-color: var(--color-texto-claro);
+}
+
+/* ---------- 13.2 Marca / logo ---------- */
+.marca-nombre {
+  transition: color 0.25s ease;
+}
+
+.marca:hover .marca-nombre,
+.marca:focus .marca-nombre {
+  color: var(--color-acento);
+}
+
+.marca:active .marca-nombre {
+  color: var(--color-secundario);
+}
+
+/* ---------- 13.3 Botón hamburguesa ---------- */
+.navbar-personal .navbar-toggler:hover {
+  background-color: rgba(242, 169, 0, 0.18);
+}
+
+.navbar-personal .navbar-toggler:focus {
+  box-shadow: 0 0 0 0.2rem rgba(242, 169, 0, 0.45);
+}
+
+.navbar-personal .navbar-toggler:active {
+  transform: scale(0.95);
+  background-color: rgba(242, 169, 0, 0.3);
+}
+
+/* ---------- 13.4 Botones ---------- */
+.btn-acento:hover,
+.btn-acento:focus {
+  color: var(--color-texto);
+  background-color: #d99700;
+  border-color: #d99700;
+  box-shadow: 0 4px 12px rgba(31, 58, 95, 0.25);
+}
+
+.btn-acento:active {
+  color: var(--color-texto-claro);
+  background-color: var(--color-primario);
+  border-color: var(--color-primario);
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.btn-contorno:hover,
+.btn-contorno:focus {
+  color: var(--color-primario);
+  background-color: var(--color-acento);
+  border-color: var(--color-acento);
+}
+
+.btn-contorno:active {
+  color: var(--color-texto-claro);
+  background-color: var(--color-secundario);
+  border-color: var(--color-secundario);
+  transform: translateY(2px);
+}
+
+/* Foco visible para quien navega con el teclado */
+.btn-acento:focus-visible,
+.btn-contorno:focus-visible,
+.navbar-personal .navbar-nav .nav-link:focus-visible {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 3px;
+}
+
+/* ---------- 13.5 Controles del carousel ---------- */
+.carrusel-personal .carousel-control-prev:hover .carousel-control-prev-icon,
+.carrusel-personal .carousel-control-prev:focus .carousel-control-prev-icon,
+.carrusel-personal .carousel-control-next:hover .carousel-control-next-icon,
+.carrusel-personal .carousel-control-next:focus .carousel-control-next-icon {
+  background-color: var(--color-acento);
+}
+
+.carrusel-personal .carousel-control-prev:active .carousel-control-prev-icon,
+.carrusel-personal .carousel-control-next:active .carousel-control-next-icon {
+  transform: scale(0.9);
+  background-color: var(--color-secundario);
+}
+
+.carrusel-personal .carousel-indicators [data-bs-target]:hover,
+.carrusel-personal .carousel-indicators [data-bs-target]:focus {
+  background-color: var(--color-acento);
+  opacity: 1;
+}
+
+.carrusel-personal .carousel-indicators [data-bs-target]:active {
+  transform: scale(0.85);
+}
+
+/* ---------- 13.6 Accordion ---------- */
+.acordeon-personal .accordion-button:hover {
+  background-color: #eaf1f9;
+}
+
+.acordeon-personal .accordion-button:not(.collapsed):hover {
+  background-color: #2a4d7c;
+}
+
+.acordeon-personal .accordion-button:focus {
+  border-color: var(--color-acento);
+  box-shadow: 0 0 0 0.2rem rgba(242, 169, 0, 0.35);
+}
+
+.acordeon-personal .accordion-button:active {
+  color: var(--color-texto-claro);
+  background-color: var(--color-secundario);
+}
+
+/* ---------- 13.7 Tarjetas (propias y de Bootstrap) ---------- */
+.tarjeta {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.tarjeta:hover,
+.tarjeta:focus-within {
+  transform: translateY(-4px);
+  border-color: var(--color-acento);
+  box-shadow: 0 8px 18px rgba(31, 58, 95, 0.15);
+}
+
+.tarjeta-bs:hover,
+.tarjeta-bs:focus-within {
+  transform: translateY(-6px);
+  border-color: var(--color-acento);
+  box-shadow: 0 10px 20px rgba(31, 58, 95, 0.18);
+}
+
+.tarjeta-bs:active {
+  transform: translateY(-2px);
+}
+
+/* ---------- 13.8 Modal, list-group y formulario ---------- */
+.modal-personal .btn-close:hover,
+.modal-personal .btn-close:focus {
+  transform: rotate(90deg);
+  opacity: 1;
+}
+
+.modal-personal .btn-close:active {
+  transform: rotate(90deg) scale(0.9);
+}
+
+.lista-personal .list-group-item:hover,
+.lista-personal .list-group-item:focus {
+  color: var(--color-primario);
+  background-color: #eaf1f9;
+  padding-left: 1.5rem;
+}
+
+.lista-personal .list-group-item:active {
+  color: var(--color-texto-claro);
+  background-color: var(--color-secundario);
+}
+
+.formulario-personal .form-control:hover {
+  border-color: var(--color-secundario);
+}
+
+.formulario-personal .form-control:focus {
+  border-color: var(--color-acento);
+  box-shadow: 0 0 0 0.2rem rgba(242, 169, 0, 0.25);
+}
+
+/* ---------- 13.9 Enlaces de contenido y del pie ---------- */
+.enlace {
+  transition: color 0.25s ease;
+}
+
+.enlace:active,
+.nav-enlace:active {
+  color: var(--color-secundario);
+}
+
+/* ---------- 13.10 Ajuste del navbar en pantallas grandes ---------- */
+@media (min-width: 992px) {
+  .navbar-personal {
+    padding: 0.75rem 2rem;
+  }
+
+  .navbar-personal .navbar-collapse {
+    padding-top: 0;
+  }
+}
+
+/* ---------- 12.7 Ajustes finos ---------- */
+/* Las imágenes de las cards y del carousel escalan por ancho:
+   height auto evita que queden "estiradas" con bordes blancos */
+.tarjeta-bs .card-img-top,
+.carrusel-personal .carousel-item img {
+  width: 100%;
+  height: auto;
+}
+
+/* En el inicio, cada bloque del grid ocupa solo lo que necesita */
+.grilla-inicio {
+  align-items: start;
+}
+
+/* El caption del carousel se lee bien también en celular:
+   en pantallas chicas queda una barra compacta con el título,
+   y desde 768px se suma la descripción. */
+.carrusel-personal .carousel-caption {
+  left: 6%;
+  right: 6%;
+  bottom: 2.2rem;
+  padding: 0.35rem 0.6rem;
+}
+
+.carrusel-titulo {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.carrusel-texto {
+  display: none;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .carrusel-personal .carousel-caption {
+    left: 12%;
+    right: 12%;
+    bottom: 2.5rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .carrusel-titulo {
+    font-size: 1.2rem;
+  }
+
+  .carrusel-texto {
+    display: block;
   }
 }
