@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" role="img" aria-label="Ilustración de una grilla de CSS Grid con columnas y filas">
+  <rect width="800" height="400" fill="#4a7fb5"/>
+  <rect x="120" y="60" width="560" height="240" rx="14" fill="#1f3a5f"/>
+  <rect x="150" y="90" width="160" height="80" rx="8" fill="#f5f7fa"/>
+  <rect x="325" y="90" width="160" height="80" rx="8" fill="#f5f7fa"/>
+  <rect x="500" y="90" width="150" height="80" rx="8" fill="#f2a900"/>
+  <rect x="150" y="185" width="335" height="85" rx="8" fill="#f2a900"/>
+  <rect x="500" y="185" width="150" height="85" rx="8" fill="#f5f7fa"/>
+</svg>
