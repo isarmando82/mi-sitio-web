@@ -106,6 +106,43 @@
   color: #4a7fb5;
 }
 
+@keyframes aparecer-arriba {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes bajar-encabezado {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes latir-acento {
+  0% {
+    box-shadow: 0 0 0 0 rgba(242, 169, 0, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 0.75rem rgba(242, 169, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(242, 169, 0, 0);
+  }
+}
+@keyframes flotar {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
 .contenido {
   display: grid;
   grid-template-columns: 1fr;
@@ -199,6 +236,36 @@
   border-radius: 12px;
   border-left: 6px solid #f2a900;
 }
+@media (prefers-reduced-motion: no-preference) {
+  .hero .titulo-principal {
+    animation-name: aparecer-arriba;
+    animation-duration: 0.7s;
+    animation-delay: 0.1s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero .texto-intro {
+    animation-name: aparecer-arriba;
+    animation-duration: 0.7s;
+    animation-delay: 0.25s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero .hero-acciones {
+    animation-name: aparecer-arriba;
+    animation-duration: 0.7s;
+    animation-delay: 0.4s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+  }
+}
 @media (min-width: 768px) {
   .hero {
     padding: 2.5rem 2rem;
@@ -256,6 +323,16 @@
   background-color: #1f3a5f;
   border-bottom: 4px solid #f2a900;
 }
+@media (prefers-reduced-motion: no-preference) {
+  .encabezado-sitio {
+    animation-name: bajar-encabezado;
+    animation-duration: 0.5s;
+    animation-delay: 0s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+  }
+}
 
 .navbar-personal {
   padding: 0.75rem 1rem;
@@ -285,6 +362,16 @@
 
 .marca-logo {
   display: block;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .marca-logo {
+    animation-name: flotar;
+    animation-duration: 5s;
+    animation-delay: 0s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+  }
 }
 
 .marca-nombre {
@@ -459,6 +546,17 @@
   margin-top: 0.5rem;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .hero .btn-acento {
+    animation-name: latir-acento;
+    animation-duration: 2s;
+    animation-delay: 1.4s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 3;
+    animation-fill-mode: none;
+  }
+}
+
 .btn-acento {
   color: #1c2733;
   background-color: #f2a900;
@@ -499,19 +597,22 @@
   transform: translateY(2px);
 }
 
-.tarjeta {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+.tarjeta-bs, .tarjeta {
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(31, 58, 95, 0.08);
-  padding: 1.5rem;
-  height: 100%;
   transition-property: transform, box-shadow, border-color;
   transition-duration: 0.25s;
   transition-timing-function: ease;
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem;
+  height: 100%;
 }
 .tarjeta .titulo-seccion {
   font-size: 1.2rem;
@@ -535,14 +636,7 @@
 }
 
 .tarjeta-bs {
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(31, 58, 95, 0.08);
   overflow: hidden;
-  transition-property: transform, box-shadow, border-color;
-  transition-duration: 0.25s;
-  transition-timing-function: ease;
 }
 .tarjeta-bs .card-img-top {
   width: 100%;
