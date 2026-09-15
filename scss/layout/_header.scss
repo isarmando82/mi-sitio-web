@@ -1,0 +1,57 @@
+// ============================================================
+//  layout/_header.scss
+//  Barra superior del sitio y marca (logo + nombre).
+//  El comportamiento responsivo lo aporta la navbar de Bootstrap;
+//  acá solo se la repinta con la paleta propia.
+// ============================================================
+
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+.encabezado-sitio {
+  background-color: $color-primario;
+  border-bottom: 4px solid $color-acento;
+}
+
+// ---------- Contenedor de la navbar de Bootstrap ----------
+.navbar-personal {
+  padding: $espacio-chico $espacio-interno;
+  background-color: $color-primario;
+
+  .navbar-brand {
+    padding: 0;
+  }
+
+  // A partir de 992px Bootstrap deja de colapsar el menú
+  @include desde('navbar') {
+    padding: $espacio-chico 2rem;
+  }
+}
+
+// ---------- Marca: logo + nombre ----------
+.marca {
+  display: flex;
+  align-items: center;
+  gap: $espacio-minimo;
+  text-decoration: none;
+
+  // El & permite escribir los estados sin repetir el selector padre
+  &:hover .marca-nombre,
+  &:focus .marca-nombre {
+    color: $color-acento;
+  }
+
+  &:active .marca-nombre {
+    color: $color-secundario;
+  }
+}
+
+.marca-logo {
+  display: block;
+}
+
+.marca-nombre {
+  @include titulo(1.25rem);
+  color: $color-texto-claro;
+  @include transicion(color);
+}

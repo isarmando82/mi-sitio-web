@@ -1,0 +1,119 @@
+// ============================================================
+//  components/_carousel.scss
+//  Carousel de la galería: marco, controles, indicadores y el
+//  caption, que en celular queda compacto y desde 768px muestra
+//  también la descripción.
+// ============================================================
+
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+.carrusel-personal {
+  border: 3px solid $color-primario;
+  border-radius: $radio-grande;
+  overflow: hidden;
+  box-shadow: $sombra-media;
+
+  // La imagen escala por ancho, nunca se estira
+  .carousel-item img {
+    width: 100%;
+    height: auto;
+  }
+
+  // ---------- Controles (flechas) ----------
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: $color-primario;
+    border: 2px solid $color-acento;
+    border-radius: 50%;
+    padding: 1.1rem;
+    background-size: 45% 45%;
+    transition: background-color $tiempo-medio ease, transform $tiempo-corto ease;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    &:hover,
+    &:focus {
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        background-color: $color-acento;
+      }
+    }
+
+    &:active {
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        transform: scale(0.9);
+        background-color: $color-secundario;
+      }
+    }
+  }
+
+  // ---------- Indicadores (puntitos) ----------
+  .carousel-indicators {
+    [data-bs-target] {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid $color-primario;
+      background-color: $color-superficie;
+      opacity: 0.65;
+      transition: background-color $tiempo-medio ease, opacity $tiempo-medio ease,
+        transform $tiempo-corto ease;
+
+      &:hover,
+      &:focus {
+        background-color: $color-acento;
+        opacity: 1;
+      }
+
+      &:active {
+        transform: scale(0.85);
+      }
+    }
+
+    .active {
+      background-color: $color-acento;
+      opacity: 1;
+    }
+  }
+
+  // ---------- Caption ----------
+  .carousel-caption {
+    background-color: rgba($color-primario, 0.8);
+    border-radius: $radio-chico;
+    left: 6%;
+    right: 6%;
+    bottom: 2.2rem;
+    padding: 0.35rem $espacio-minimo;
+
+    @include desde('tablet') {
+      left: 12%;
+      right: 12%;
+      bottom: $espacio-grande;
+      padding: $espacio-minimo $espacio-interno;
+    }
+  }
+}
+
+.carrusel-titulo {
+  @include titulo(1rem);
+  color: $color-acento;
+  margin: 0;
+
+  @include desde('tablet') {
+    font-size: 1.2rem;
+  }
+}
+
+.carrusel-texto {
+  font-size: 0.95rem;
+  color: $color-texto-claro;
+  display: none; // en celular el caption es solo el título
+  margin: 0;
+
+  @include desde('tablet') {
+    display: block;
+  }
+}

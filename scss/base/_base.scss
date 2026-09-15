@@ -1,0 +1,26 @@
+// ============================================================
+//  base/_base.scss
+//  Estilos globales a etiquetas: el reset y el cuerpo de página.
+//  Nada de componentes acá.
+// ============================================================
+
+@use '../utilities/variables' as *;
+
+// ---------- Reset global ----------
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// ---------- Cuerpo de la página ----------
+// Estrategia mobile-first: este es el diseño base de celular.
+// La complejidad se suma después con @include desde(...).
+.pagina {
+  font-family: $fuente-cuerpo;
+  font-weight: $peso-normal;
+  font-size: $cuerpo-base;
+  line-height: $interlineado;
+  color: $color-texto;
+  background-color: $color-fondo;
+}

@@ -1,0 +1,83 @@
+// ============================================================
+//  components/_buttons.scss
+//  Botones del sitio. Son .btn de Bootstrap repintados con la
+//  paleta propia, con sus tres estados y transición.
+// ============================================================
+
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+// Base compartida por los dos botones. Al ser un placeholder (%) no
+// genera CSS por sí solo: aparece solo donde se lo extiende.
+%boton-base {
+  // Sin font-size: el .btn de Bootstrap ya define el suyo y acá solo
+  // se cambian la familia y el peso.
+  font-family: $fuente-titulos;
+  font-weight: $peso-semi;
+  border-radius: $radio-chico;
+  padding: 0.5rem 1.2rem;
+  transition: background-color $tiempo-medio ease, border-color $tiempo-medio ease,
+    color $tiempo-medio ease, box-shadow $tiempo-medio ease, transform $tiempo-rapido ease;
+
+  @include foco-teclado;
+}
+
+// Contenedor de los botones del hero
+.hero-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $espacio-chico;
+  margin-top: 0.5rem;
+}
+
+// ---------- Botón sólido dorado ----------
+.btn-acento {
+  @extend %boton-base;
+  color: $color-texto;
+  background-color: $color-acento;
+  border: 2px solid $color-acento;
+
+  &:hover,
+  &:focus {
+    color: $color-texto;
+    background-color: $color-acento-oscuro;
+    border-color: $color-acento-oscuro;
+    box-shadow: $sombra-boton;
+  }
+
+  &:active {
+    color: $color-texto-claro;
+    background-color: $color-primario;
+    border-color: $color-primario;
+    transform: translateY(2px);
+    box-shadow: none;
+  }
+}
+
+// ---------- Botón de contorno ----------
+.btn-contorno {
+  @extend %boton-base;
+  color: $color-texto-claro;
+  background-color: transparent;
+  border: 2px solid $color-texto-claro;
+
+  // Variante para fondos claros (modales, páginas internas)
+  &.btn-oscuro {
+    color: $color-primario;
+    border-color: $color-primario;
+  }
+
+  &:hover,
+  &:focus {
+    color: $color-primario;
+    background-color: $color-acento;
+    border-color: $color-acento;
+  }
+
+  &:active {
+    color: $color-texto-claro;
+    background-color: $color-secundario;
+    border-color: $color-secundario;
+    transform: translateY(2px);
+  }
+}

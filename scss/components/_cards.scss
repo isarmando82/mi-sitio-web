@@ -1,0 +1,76 @@
+// ============================================================
+//  components/_cards.scss
+//  Tarjetas: las propias (.tarjeta, con Flexbox) y las de
+//  Bootstrap repintadas (.tarjeta-bs, en la página de proyectos).
+// ============================================================
+
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+// ---------- Tarjeta propia ----------
+.tarjeta {
+  @include columna($espacio-minimo);
+  @include superficie;
+  padding: $espacio-medio;
+  height: 100%; // todas las tarjetas de una fila quedan parejas
+  @include transicion(transform, box-shadow, border-color);
+
+  // Dentro de una tarjeta el título va más chico que el de una sección
+  .titulo-seccion {
+    font-size: 1.2rem;
+  }
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-4px);
+    border-color: $color-acento;
+    box-shadow: $sombra-elevada;
+  }
+}
+
+// Empuja el bloque de tecnologías al pie de la tarjeta
+.tarjeta-pie {
+  margin-top: auto;
+  padding-top: $espacio-minimo;
+  border-top: 1px solid $color-borde;
+  font-size: 0.9rem;
+  color: $color-secundario;
+}
+
+// ---------- Fila de tarjetas de Bootstrap ----------
+.fila-proyectos {
+  margin-top: $espacio-medio;
+}
+
+.tarjeta-bs {
+  @include superficie;
+  overflow: hidden;
+  @include transicion(transform, box-shadow, border-color);
+
+  // La imagen escala por ancho: height auto evita que quede estirada
+  .card-img-top {
+    width: 100%;
+    height: auto;
+    border-bottom: 3px solid $color-acento;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .card-footer {
+    background-color: transparent;
+    border-top: 1px solid $color-borde;
+  }
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-6px);
+    border-color: $color-acento;
+    box-shadow: $sombra-elevada-fuerte;
+  }
+
+  &:active {
+    transform: translateY(-2px);
+  }
+}

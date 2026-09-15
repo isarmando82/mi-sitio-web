@@ -1,0 +1,74 @@
+// ============================================================
+//  utilities/_variables.scss
+//  Único lugar donde viven los valores del diseño.
+//  Ningún otro partial escribe un color, una medida o una
+//  tipografía "a mano": todos toman los valores de acá.
+// ============================================================
+
+// ---------- Paleta ----------
+$color-primario: #1f3a5f; // azul oscuro: encabezado, pie y títulos
+$color-secundario: #4a7fb5; // azul medio: enlaces y detalles
+$color-acento: #f2a900; // dorado: acentos, hover y bordes
+$color-fondo: #f5f7fa; // fondo general claro
+$color-superficie: #ffffff; // fondo de tarjetas
+$color-texto: #1c2733; // texto principal
+$color-texto-claro: #ffffff; // texto sobre fondos oscuros
+$color-borde: #e2e8f0; // borde suave de tarjetas
+
+// ---------- Variantes de la paleta (estados) ----------
+$color-acento-oscuro: #d99700; // dorado presionado / hover de botón
+$color-primario-claro: #2a4d7c; // azul del accordion abierto en hover
+$color-fondo-hover: #eaf1f9; // fondo suave de hover sobre superficies
+$color-insignia-fondo: #ffe9bd; // relleno de los badges
+$color-aviso-fondo: #fff6e0; // relleno del alert
+
+// ---------- Tipografías ----------
+$fuente-titulos: 'Poppins', sans-serif;
+$fuente-cuerpo: 'Open Sans', sans-serif;
+
+$peso-normal: 400;
+$peso-semi: 600;
+$peso-fuerte: 700;
+
+$cuerpo-base: 16px;
+$interlineado: 1.6;
+
+// ---------- Espaciados ----------
+$espacio-minimo: 0.6rem;
+$espacio-chico: 0.75rem;
+$espacio-interno: 1rem;
+$espacio-seccion: 1.25rem;
+$espacio-medio: 1.5rem;
+$espacio-grande: 2.5rem;
+
+// ---------- Radios de borde ----------
+$radio-chico: 8px;
+$radio-medio: 10px;
+$radio-grande: 12px;
+$radio-pastilla: 999px;
+
+// ---------- Sombras ----------
+$sombra-suave: 0 2px 8px rgba($color-primario, 0.08);
+$sombra-media: 0 4px 14px rgba($color-primario, 0.15);
+$sombra-elevada: 0 8px 18px rgba($color-primario, 0.15);
+$sombra-elevada-fuerte: 0 10px 20px rgba($color-primario, 0.18);
+$sombra-boton: 0 4px 12px rgba($color-primario, 0.25);
+
+// ---------- Duraciones de transición ----------
+$tiempo-rapido: 0.15s;
+$tiempo-corto: 0.2s;
+$tiempo-medio: 0.25s;
+
+// ---------- Ancho máximo del contenido ----------
+$ancho-contenido: 1200px;
+$ancho-figura-inicio: 800px;
+
+// ---------- Breakpoints (mobile-first, siempre min-width) ----------
+// tablet      768px  -> dos columnas
+// navbar      992px  -> Bootstrap deja de colapsar el menú (breakpoint lg)
+// escritorio 1024px  -> layout maestro definitivo
+$breakpoints: (
+  'tablet': 768px,
+  'navbar': 992px,
+  'escritorio': 1024px,
+);

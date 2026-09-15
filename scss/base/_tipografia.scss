@@ -1,0 +1,98 @@
+// ============================================================
+//  base/_tipografia.scss
+//  Escala tipográfica del sitio: títulos, textos, listas y enlaces
+//  de contenido. Los tamaños crecen con los breakpoints.
+// ============================================================
+
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+// ---------- Títulos ----------
+.titulo-principal {
+  @include titulo(2rem, $peso-fuerte);
+  line-height: 1.2;
+
+  @include desde('tablet') {
+    font-size: 2.2rem;
+  }
+
+  @include desde('escritorio') {
+    font-size: 2.6rem;
+  }
+}
+
+// Variante para títulos principales sobre fondo claro (páginas internas)
+.titulo-oscuro {
+  color: $color-primario;
+}
+
+.titulo-seccion {
+  @include titulo(1.4rem);
+  color: $color-primario;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid $color-acento;
+
+  @include desde('tablet') {
+    font-size: 1.6rem;
+  }
+
+  @include desde('escritorio') {
+    font-size: 1.8rem;
+  }
+}
+
+.subtitulo {
+  @include titulo(1.1rem);
+  color: $color-secundario;
+}
+
+// ---------- Textos ----------
+.texto {
+  font-size: 1rem;
+}
+
+.texto-intro {
+  font-size: 1.05rem;
+
+  @include desde('escritorio') {
+    font-size: 1.15rem;
+  }
+}
+
+// ---------- Listas de contenido ----------
+.lista {
+  list-style: none;
+
+  li {
+    position: relative;
+    padding-left: $espacio-medio;
+    margin-bottom: 0.5rem;
+
+    // Viñeta dorada propia, en lugar del bullet del navegador
+    &::before {
+      content: '\25B8';
+      position: absolute;
+      left: 0;
+      color: $color-acento;
+      font-weight: $peso-fuerte;
+    }
+  }
+}
+
+// ---------- Enlaces dentro del contenido ----------
+.enlace {
+  color: $color-secundario;
+  font-weight: $peso-semi;
+  text-decoration: none;
+  @include transicion(color);
+
+  &:hover,
+  &:focus {
+    color: $color-acento;
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: $color-secundario;
+  }
+}

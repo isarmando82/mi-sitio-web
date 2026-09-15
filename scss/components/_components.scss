@@ -1,0 +1,46 @@
+// ============================================================
+//  components/_components.scss
+//  Elementos reutilizables que aparecen en varias páginas y no
+//  necesitan un partial propio: insignias, figuras y el aviso.
+// ============================================================
+
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+// ---------- Insignias / badges de tecnologías ----------
+.insignia {
+  display: inline-block;
+  @include titulo(0.75rem);
+  color: $color-primario;
+  background-color: $color-insignia-fondo;
+  border: 1px solid $color-acento;
+  border-radius: $radio-pastilla;
+  padding: 0.35em 0.75em;
+  margin: 0.3rem 0.2rem 0 0;
+}
+
+// ---------- Figuras e imágenes de apoyo ----------
+.figura-imagen {
+  display: block;
+  width: 100%; // la imagen nunca desborda el ancho del celular
+  height: auto;
+  border-radius: $radio-medio;
+  border: 3px solid $color-primario;
+}
+
+.figura-pie {
+  margin-top: $espacio-minimo;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: $color-secundario;
+  text-align: center;
+}
+
+// ---------- Aviso / alert de la página de contacto ----------
+.aviso-personal {
+  color: $color-texto;
+  background-color: $color-aviso-fondo;
+  border: 1px solid $color-acento;
+  border-left: 6px solid $color-acento;
+  border-radius: $radio-chico;
+}

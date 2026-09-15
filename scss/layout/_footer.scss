@@ -1,0 +1,29 @@
+// ============================================================
+//  layout/_footer.scss
+//  Pie de página. En celular se apila; desde 768px los bloques
+//  se van a los extremos.
+// ============================================================
+
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+.pie {
+  @include columna($espacio-interno);
+  align-items: flex-start;
+  padding: $espacio-medio $espacio-interno;
+  background-color: $color-primario;
+  color: $color-texto-claro;
+  border-top: 4px solid $color-acento;
+
+  @include desde('tablet') {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: $espacio-medio 2rem;
+  }
+}
+
+.pie-texto {
+  font-size: 0.9rem;
+}

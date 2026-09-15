@@ -1,0 +1,105 @@
+// ============================================================
+//  layout/_nav.scss
+//  Navegación: los enlaces del menú, el botón hamburguesa y el
+//  panel que se despliega en celular.
+//  Todos los estados (:hover, :focus, :active) viven junto al
+//  elemento al que pertenecen, anidados con &.
+// ============================================================
+
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+// ---------- Lista de enlaces propia (flex container) ----------
+.nav-lista {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $espacio-interno;
+  list-style: none;
+}
+
+.nav-enlace {
+  @include titulo(0.95rem);
+  color: $color-texto-claro;
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-color $tiempo-corto ease, color $tiempo-corto ease;
+
+  &:hover,
+  &:focus {
+    color: $color-acento;
+    border-bottom-color: $color-acento;
+  }
+
+  &:active {
+    color: $color-secundario;
+  }
+}
+
+// ---------- Enlaces de la navbar de Bootstrap ----------
+.navbar-personal {
+  .navbar-nav .nav-link {
+    @include titulo(0.95rem);
+    color: $color-texto-claro;
+    padding: 0.4rem $espacio-chico;
+    border-bottom: 2px solid transparent;
+    @include transicion(color, border-color, background-color);
+    @include foco-teclado;
+
+    // Estado activo: marca en qué página estamos
+    &.active {
+      color: $color-acento;
+      border-bottom-color: $color-acento;
+    }
+
+    &:hover,
+    &:focus {
+      color: $color-acento;
+      border-bottom-color: $color-acento;
+      background-color: rgba($color-texto-claro, 0.08);
+    }
+
+    &:active {
+      color: $color-texto-claro;
+      background-color: $color-secundario;
+      border-bottom-color: $color-texto-claro;
+    }
+  }
+
+  // ---------- Botón hamburguesa ----------
+  .navbar-toggler {
+    border: 2px solid $color-acento;
+    padding: 0.4rem $espacio-minimo;
+    transition: background-color $tiempo-medio ease, box-shadow $tiempo-medio ease,
+      transform $tiempo-rapido ease;
+
+    &:hover {
+      background-color: rgba($color-acento, 0.18);
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba($color-acento, 0.45);
+    }
+
+    &:active {
+      transform: scale(0.95);
+      background-color: rgba($color-acento, 0.3);
+    }
+  }
+
+  // El ícono se redibuja en dorado: el color sale de la variable,
+  // no está escrito a mano dentro del SVG.
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='#{color-url($color-acento)}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+
+  // ---------- Panel desplegable ----------
+  .navbar-collapse {
+    padding-top: 0.5rem; // en celular el menú abierto necesita aire
+
+    @include desde('navbar') {
+      padding-top: 0;
+    }
+  }
+}

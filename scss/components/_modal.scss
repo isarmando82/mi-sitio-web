@@ -1,0 +1,39 @@
+// ============================================================
+//  components/_modal.scss
+//  Modales de detalle de los proyectos.
+// ============================================================
+
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+.modal-personal {
+  .modal-content {
+    border: none;
+    border-top: 6px solid $color-acento;
+    border-radius: $radio-grande;
+  }
+
+  .modal-header {
+    background-color: $color-primario;
+  }
+
+  .modal-title {
+    color: $color-acento;
+  }
+
+  // La cruz de cerrar se invierte para que se vea sobre el azul
+  .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+    @include transicion(transform, opacity);
+
+    &:hover,
+    &:focus {
+      transform: rotate(90deg);
+      opacity: 1;
+    }
+
+    &:active {
+      transform: rotate(90deg) scale(0.9);
+    }
+  }
+}

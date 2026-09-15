@@ -1,0 +1,52 @@
+// ============================================================
+//  components/_forms.scss
+//  Formulario de contacto y list-group de servicios / sobre mí.
+// ============================================================
+
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+// ---------- List group ----------
+.lista-personal {
+  .list-group-item {
+    color: $color-texto;
+    border-color: $color-borde;
+    @include transicion(background-color, color, padding-left);
+
+    &:hover,
+    &:focus {
+      color: $color-primario;
+      background-color: $color-fondo-hover;
+      padding-left: $espacio-medio; // el ítem "entra" un poco al pasar el mouse
+    }
+
+    &:active {
+      color: $color-texto-claro;
+      background-color: $color-secundario;
+    }
+  }
+}
+
+// ---------- Formulario ----------
+.formulario-personal {
+  .form-label {
+    font-family: $fuente-titulos;
+    font-weight: $peso-semi;
+    color: $color-primario;
+  }
+
+  .form-control {
+    border: 1px solid $color-borde;
+    border-radius: $radio-chico;
+    @include transicion(border-color, box-shadow);
+
+    &:hover {
+      border-color: $color-secundario;
+    }
+
+    &:focus {
+      border-color: $color-acento;
+      box-shadow: 0 0 0 0.2rem rgba($color-acento, 0.25);
+    }
+  }
+}

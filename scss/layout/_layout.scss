@@ -1,0 +1,165 @@
+// ============================================================
+//  layout/_layout.scss
+//  Estructura maestra de la página: el grid del <main>, las áreas
+//  nombradas, las grillas internas y la escalera responsiva.
+//
+//  MOBILE-FIRST: el bloque base es el diseño de celular (una sola
+//  columna) y cada @include desde(...) SUMA complejidad.
+// ============================================================
+
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+// ---------- Contenedor principal (grid container de todo el sitio) ----------
+.contenido {
+  display: grid;
+  grid-template-columns: 1fr; // unidad fr: la columna se adapta, no es rígida
+  gap: $espacio-grande;
+  width: 100%;
+  max-width: $ancho-contenido;
+  margin: 0 auto; // centra el contenido en pantallas grandes
+  padding: 2rem $espacio-interno;
+
+  @include desde('tablet') {
+    padding: $espacio-grande $espacio-medio;
+  }
+
+  @include desde('escritorio') {
+    padding: 3rem 2rem;
+  }
+}
+
+// ---------- Grid con áreas nombradas: página de inicio ----------
+.grilla-inicio {
+  align-items: start; // cada bloque ocupa solo el alto que necesita
+  grid-template-areas:
+    'hero'
+    'bio'
+    'skills'
+    'galeria'
+    'figura';
+
+  // Tablet: habilidades y figura conviven lado a lado
+  @include desde('tablet') {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'hero    hero'
+      'bio     bio'
+      'skills  figura'
+      'galeria galeria';
+  }
+
+  // Escritorio: layout definitivo, la biografía recibe más espacio (2fr)
+  @include desde('escritorio') {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+      'hero    hero'
+      'bio     skills'
+      'galeria galeria'
+      'figura  figura';
+
+    // En inicio la figura ocupa toda la fila: la limitamos a su tamaño
+    // natural y la centramos para que no se agrande de más
+    .area-figura .figura-imagen {
+      max-width: $ancho-figura-inicio;
+      margin: 0 auto;
+    }
+  }
+}
+
+// ---------- Grid con áreas nombradas: página de proyectos ----------
+.grilla-proyectos-pagina {
+  grid-template-areas:
+    'intro'
+    'proyectos'
+    'figura';
+
+  // Escritorio: intro y figura arriba, las tarjetas a lo ancho abajo
+  @include desde('escritorio') {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+      'intro     figura'
+      'proyectos proyectos';
+  }
+}
+
+// ---------- Asignación de cada bloque a su área ----------
+.area-hero {
+  grid-area: hero;
+}
+.area-bio {
+  grid-area: bio;
+}
+.area-skills {
+  grid-area: skills;
+}
+.area-figura {
+  grid-area: figura;
+}
+.area-intro {
+  grid-area: intro;
+}
+.area-proyectos {
+  grid-area: proyectos;
+}
+.area-galeria {
+  grid-area: galeria;
+}
+
+// ---------- Cada sección ordena sus elementos internos con flex ----------
+.seccion {
+  @include columna($espacio-seccion);
+}
+
+// ---------- Sección de presentación destacada ----------
+// Va después de .seccion a propósito: comparte especificidad y necesita
+// pisarle el gap.
+.hero {
+  gap: $espacio-chico;
+  padding: 2rem $espacio-medio;
+  background-color: $color-primario;
+  color: $color-texto-claro;
+  border-radius: $radio-grande;
+  border-left: 6px solid $color-acento;
+
+  @include desde('tablet') {
+    padding: $espacio-grande 2rem;
+  }
+
+  @include desde('escritorio') {
+    padding: 3rem $espacio-grande;
+  }
+}
+
+// ---------- Grillas internas de tarjetas ----------
+// Siempre con fr, nunca con anchos fijos en px.
+.grilla-tarjetas {
+  @include grilla-fluida($espacio-medio);
+
+  @include desde('tablet') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include desde('escritorio') {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $espacio-grande;
+  }
+}
+
+// Dos columnas iguales (servicios)
+.grilla-dos-iguales {
+  @include grilla-fluida($espacio-medio);
+
+  @include desde('tablet') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// Contenido principal + figura de apoyo (sobre mí, contacto)
+.grilla-dos {
+  @include grilla-fluida($espacio-medio, start);
+
+  @include desde('tablet') {
+    grid-template-columns: 2fr 1fr;
+  }
+}

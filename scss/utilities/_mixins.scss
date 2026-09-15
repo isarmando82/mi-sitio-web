@@ -1,0 +1,79 @@
+// ============================================================
+//  utilities/_mixins.scss
+//  Bloques de estilo que se repiten en más de un componente.
+//  Evitan copiar y pegar las mismas cuatro o cinco propiedades.
+// ============================================================
+
+@use 'sass:map';
+@use 'sass:string';
+@use 'variables' as *;
+
+// ---------- Media queries mobile-first ----------
+// Uso: @include desde('tablet') { ... }
+// Un solo lugar define los anchos, así no hay números sueltos
+// repartidos por los partials.
+@mixin desde($nombre) {
+  $ancho: map.get($breakpoints, $nombre);
+
+  @if $ancho == null {
+    @error "Breakpoint desconocido: #{$nombre}. Definilo en $breakpoints.";
+  }
+
+  @media (min-width: $ancho) {
+    @content;
+  }
+}
+
+// ---------- Transición ----------
+// Uso: @include transicion(color, border-color);
+@mixin transicion($propiedades...) {
+  transition-property: $propiedades;
+  transition-duration: $tiempo-medio;
+  transition-timing-function: ease;
+}
+
+// ---------- Contenedor flexible en columna ----------
+@mixin columna($separacion: $espacio-medio) {
+  display: flex;
+  flex-direction: column;
+  gap: $separacion;
+}
+
+// ---------- Grilla de una columna que después crece ----------
+@mixin grilla-fluida($separacion: $espacio-medio, $alineacion: stretch) {
+  display: grid;
+  grid-template-columns: 1fr; // mobile-first: siempre arranca en una
+  gap: $separacion;
+  align-items: $alineacion;
+}
+
+// ---------- Superficie de tarjeta ----------
+@mixin superficie($radio: $radio-medio, $sombra: $sombra-suave) {
+  background-color: $color-superficie;
+  border: 1px solid $color-borde;
+  border-radius: $radio;
+  box-shadow: $sombra;
+}
+
+// ---------- Texto con la tipografía de títulos ----------
+@mixin titulo($tamanio, $peso: $peso-semi) {
+  font-family: $fuente-titulos;
+  font-weight: $peso;
+  font-size: $tamanio;
+}
+
+// ---------- Foco visible para navegación por teclado ----------
+@mixin foco-teclado($color: $color-acento) {
+  &:focus-visible {
+    outline: 3px solid $color;
+    outline-offset: 3px;
+  }
+}
+
+// ---------- Color en formato URL ----------
+// Los SVG embebidos como data: URI necesitan el # escapado como %23.
+// Esta función lo arma a partir de una variable, así ni siquiera los
+// iconos tienen el color escrito a mano.
+@function color-url($color) {
+  @return '%23' + string.slice('#{$color}', 2);
+}

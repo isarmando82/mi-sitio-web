@@ -1,0 +1,36 @@
+// ============================================================
+//  main.scss — único punto de entrada de la hoja de estilos
+//
+//  Sitio web personal de Ismael Armando
+//  Paleta: azul profesional + dorado
+//  Tipografías: Poppins (títulos) y Open Sans (cuerpo)
+//  Layout: CSS Grid (estructura maestra) + Flexbox (componentes)
+//  Estrategia: MOBILE-FIRST, todos los breakpoints son min-width
+//
+//  Este archivo NO contiene reglas: solo llama a los partials con
+//  @use, en el orden en el que deben salir en el CSS compilado.
+//  Se compila con:  sass scss/main.scss styles/style.css
+// ============================================================
+
+// ---------- 1. Utilidades (no generan CSS por sí solas) ----------
+@use 'utilities/variables' as *;
+@use 'utilities/mixins' as *;
+
+// ---------- 2. Base: reset y estilos globales a etiquetas ----------
+@use 'base/base';
+@use 'base/tipografia';
+
+// ---------- 3. Layout: estructura de la página ----------
+@use 'layout/layout';
+@use 'layout/header';
+@use 'layout/nav';
+@use 'layout/footer';
+
+// ---------- 4. Componentes: piezas reutilizables ----------
+@use 'components/components';
+@use 'components/buttons';
+@use 'components/cards';
+@use 'components/carousel';
+@use 'components/accordion';
+@use 'components/modal';
+@use 'components/forms';
