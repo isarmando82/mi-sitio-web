@@ -1,5 +1,8 @@
 # Mi Sitio Web Personal
 
+🔗 **Sitio publicado:** https://isarmando82.github.io/mi-sitio-web/
+📦 **Repositorio:** https://github.com/isarmando82/mi-sitio-web
+
 Sitio web personal construido con **HTML5 semántico** y estilizado con **CSS**
 (paleta de colores, tipografías de Google Fonts y jerarquía visual). Proyecto del
 curso de desarrollo web.
@@ -21,8 +24,16 @@ mi-sitio-web/
 ├── styles/
 │   └── styles.css      # Hoja de estilos externa
 ├── img/                # Imágenes representativas (.svg)
+├── .gitignore          # Archivos que Git ignora
 └── README.md
 ```
+
+`index.html` vive en la **raíz** del repositorio (requisito de GitHub Pages) y
+**todas las rutas son relativas**: desde la raíz se apunta como
+`styles/styles.css`, `img/logo.svg` y `pages/servicios.html`; desde `pages/` se
+sube un nivel con `../styles/styles.css`, `../img/logo.svg` y `../index.html`.
+No hay ninguna ruta absoluta ni ruta de disco local, así que el sitio funciona
+igual clonado en cualquier máquina que servido desde GitHub Pages.
 
 ## Características
 
@@ -101,7 +112,83 @@ de estilos compartida, se ven en los 5 archivos HTML. Además se usa
 `:focus-visible` para que quien navega con el teclado vea siempre dónde está
 parado.
 
+## Control de versiones con Git y GitHub
+
+Todo el proyecto se versiona con Git y se publica en un **repositorio público**:
+https://github.com/isarmando82/mi-sitio-web
+
+### Configuración del repositorio remoto
+
+El repositorio local se conectó al remoto y se publicó en la rama `main`:
+
+```bash
+git init
+git add .
+git commit -m "chore: estructura inicial del sitio"
+git branch -M main
+git remote add origin https://github.com/isarmando82/mi-sitio-web.git
+git push -u origin main
+```
+
+A partir de ahí, cada avance del proyecto se sube desde la consola con el ciclo
+`git add` → `git commit -m "..."` → `git push`, y con `git status`, `git log` y
+`git diff` se revisa el estado antes de confirmar.
+
+### Convención de mensajes de commit
+
+Los mensajes siguen el formato `tipo: descripción` en imperativo y en una sola
+línea, para que el historial se lea como una lista de avances:
+
+| Tipo | Se usa para |
+|---|---|
+| `feat` | Una funcionalidad o sección nueva |
+| `fix` | La corrección de un error |
+| `style` | Cambios visuales o de CSS que no alteran la funcionalidad |
+| `docs` | Documentación (este README) |
+| `chore` | Tareas de mantenimiento del repositorio (`.gitignore`, configuración) |
+
+### Archivos ignorados
+
+El `.gitignore` deja fuera del repositorio lo que no forma parte del código:
+archivos del sistema operativo (`Thumbs.db`, `.DS_Store`), carpetas de editores
+(`.vscode/`, `.idea/`), temporales y respaldos (`*.tmp`, `*.bak`, `*.log`) y los
+comprimidos de entrega (`*.zip`).
+
+### Ramas
+
+`main` es la rama de trabajo y la que publica el sitio. En el repositorio quedan
+además las ramas históricas `entrega-2`, `entrega-3` y `entrega-4`, que
+conservan el estado del proyecto en cada módulo.
+
+### Publicación con GitHub Pages
+
+El sitio se despliega desde la rama `main`, carpeta raíz (`/root`), en
+**Settings → Pages**. Cada `push` a `main` vuelve a publicar automáticamente:
+
+👉 https://isarmando82.github.io/mi-sitio-web/
+
 ## Cómo verlo
 
-Abrí `index.html` en tu navegador y navegá con el menú superior.
+- **En línea:** https://isarmando82.github.io/mi-sitio-web/
+- **En local:** cloná el repositorio y abrí `index.html` en el navegador.
+
+```bash
+git clone https://github.com/isarmando82/mi-sitio-web.git
+```
+
 Para ver el menú hamburguesa, achicá la ventana por debajo de los 992px.
+
+## Entregas del curso
+
+| Entrega | Tema | Documentado en |
+|---|---|---|
+| 1 | Estructura base con HTML5 semántico | Estructura del proyecto |
+| 2 | Estilización visual, paleta y tipografías | Características |
+| 3 | Layouts flexibles con Flexbox | Características |
+| 4 | Maquetación con CSS Grid y media queries | Maquetación con CSS Grid y responsividad |
+| 5 | Integración de Bootstrap y pseudoclases | Integración de Bootstrap y estados interactivos |
+| 6 | Estructura avanzada y control de versiones | Control de versiones con Git y GitHub |
+
+---
+
+Proyecto del curso **Desarrollo Web** de Coderhouse — Ismael Armando.
