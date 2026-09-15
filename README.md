@@ -24,6 +24,8 @@ mi-sitio-web/
 ├── scss/               # Código fuente de los estilos (ver más abajo)
 ├── styles/
 │   └── style.css       # CSS compilado — no se edita a mano
+├── js/
+│   └── animaciones.js  # Inicialización de AOS
 ├── img/                # Imágenes representativas (.svg)
 ├── package.json        # Script de compilación de Sass
 ├── .gitignore          # Archivos que Git ignora
@@ -58,12 +60,13 @@ scss/
 ├── utilities/
 │   ├── _variables.scss         # paleta, tipografías, espaciados, radios,
 │   │                           #   sombras, tiempos y breakpoints
-│   └── _mixins.scss            # desde(), transicion(), columna(),
-│                               #   grilla-fluida(), superficie(), titulo(),
-│                               #   foco-teclado() y la función color-url()
+│   └── _mixins.scss            # desde(), animar(), elevar(), transicion(),
+│                               #   columna(), grilla-fluida(), superficie(),
+│                               #   titulo(), foco-teclado() y color-url()
 ├── base/
 │   ├── _base.scss              # reset global y cuerpo de página
-│   └── _tipografia.scss        # títulos, textos, listas y enlaces
+│   ├── _tipografia.scss        # títulos, textos, listas y enlaces
+│   └── _animaciones.scss       # los @keyframes propios
 ├── layout/
 │   ├── _layout.scss            # grid maestro, áreas nombradas y breakpoints
 │   ├── _header.scss            # encabezado y marca
@@ -177,6 +180,67 @@ publica archivos estáticos y no compila SCSS por su cuenta.
 La refactorización es estructural: el sitio se ve igual que antes. Se verificó
 renderizando las 5 páginas a 375px, 768px y 1280px con la hoja vieja y con la
 nueva, y comparando las capturas píxel por píxel: **idénticas en los 15 casos**.
+
+## Animaciones
+
+El sitio combina **animaciones nativas** escritas en SCSS con una **librería
+externa** para el revelado al hacer scroll.
+
+### Nativas: `@keyframes` propios
+
+Los cuatro keyframes viven en `scss/base/_animaciones.scss` y se aplican con el
+mixin `animar()`, que recibe nombre, duración, retardo, curva, repeticiones y
+modo de relleno:
+
+| Animación | Dónde | Qué hace |
+|---|---|---|
+| `bajar-encabezado` | `.encabezado-sitio` | La barra superior baja al cargar la página |
+| `aparecer-arriba` | Título, texto y botones del hero | Entrada escalonada con retardos de 0.1s, 0.25s y 0.4s |
+| `latir-acento` | `.hero .btn-acento` | Un halo dorado se expande tres veces sobre la acción principal |
+| `flotar` | `.marca-logo` | El logo sube y baja 3px en bucle |
+
+```scss
+.marca-logo {
+  @include animar(flotar, $duracion: 5s, $curva: ease-in-out, $repeticiones: infinite);
+}
+```
+
+A eso se suman las **transiciones** de todos los elementos clicables
+(`:hover`, `:focus`, `:active`) y el mixin `elevar()`, que levanta las tarjetas
+al pasar el mouse.
+
+### Externa: AOS (Animate On Scroll)
+
+AOS entra por CDN y revela los bloques a medida que aparecen en pantalla. Los
+elementos animados llevan el atributo `data-aos` en el HTML y la configuración
+está en `js/animaciones.js`:
+
+```js
+AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 80 });
+```
+
+| Página | Elementos animados |
+|---|---|
+| `index.html` | Biografía y habilidades (`fade-up` escalonados), galería (`zoom-in`), figura (`fade-up`) |
+| `pages/proyectos.html` | Intro (`fade-right`), carousel (`fade-left`) y las 3 cards (`fade-up` con retardos de 150ms) |
+| `pages/servicios.html` | Intro y las 2 tarjetas (`fade-up` escalonados), figura (`zoom-in`) |
+| `pages/sobre-mi.html` | Intro (`fade-up`), relato (`fade-right`), figura (`fade-left`) |
+| `pages/contacto.html` | Intro (`fade-up`), datos (`fade-right`), figura (`fade-left`) |
+
+El hero es el único bloque sin `data-aos`: ahí actúa la animación nativa, para
+que las dos no se pisen.
+
+### Accesibilidad y degradación
+
+- **`prefers-reduced-motion`**: el mixin `animar()` declara todo dentro de
+  `@media (prefers-reduced-motion: no-preference)`, así que quien pidió menos
+  movimiento en su sistema operativo no recibe ninguna animación —sin necesidad
+  de apagarlas después con `!important`—. AOS se desactiva por la misma razón
+  desde su opción `disable`.
+- **Sin JavaScript**: `aos.css` oculta los bloques que espera animar. Un
+  `<noscript>` en el `<head>` los vuelve visibles, con el selector duplicado
+  (`[data-aos][data-aos]`) para igualar la especificidad que usa la librería.
+  Verificado: con JavaScript desactivado las 5 páginas se ven completas.
 
 ## Maquetación con CSS Grid y responsividad
 
@@ -322,6 +386,7 @@ Para ver el menú hamburguesa, achicá la ventana por debajo de los 992px.
 | 5 | Integración de Bootstrap y pseudoclases | Integración de Bootstrap y estados interactivos |
 | 6 | Estructura avanzada y control de versiones | Control de versiones con Git y GitHub |
 | 7 | Arquitectura SCSS y refactorización | Arquitectura SCSS |
+| 8 | Animaciones y full-responsive | Animaciones |
 
 ---
 
