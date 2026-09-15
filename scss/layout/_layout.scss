@@ -122,6 +122,21 @@
   border-radius: $radio-grande;
   border-left: 6px solid $color-acento;
 
+  // Animación nativa de entrada, escalonada: el título primero, después
+  // el texto y por último los botones. El hero no lleva data-aos para
+  // que las dos animaciones no se pisen.
+  .titulo-principal {
+    @include animar(aparecer-arriba, $duracion: 0.7s, $retardo: 0.1s);
+  }
+
+  .texto-intro {
+    @include animar(aparecer-arriba, $duracion: 0.7s, $retardo: 0.25s);
+  }
+
+  .hero-acciones {
+    @include animar(aparecer-arriba, $duracion: 0.7s, $retardo: 0.4s);
+  }
+
   @include desde('tablet') {
     padding: $espacio-grande 2rem;
   }

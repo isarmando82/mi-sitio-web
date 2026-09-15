@@ -11,6 +11,9 @@
 .encabezado-sitio {
   background-color: $color-primario;
   border-bottom: 4px solid $color-acento;
+
+  // Animación nativa: el encabezado baja al cargar la página
+  @include animar(bajar-encabezado, $duracion: 0.5s);
 }
 
 // ---------- Contenedor de la navbar de Bootstrap ----------
@@ -48,6 +51,9 @@
 
 .marca-logo {
   display: block;
+
+  // Animación nativa en bucle: el logo flota apenas 3px
+  @include animar(flotar, $duracion: 5s, $curva: ease-in-out, $repeticiones: infinite);
 }
 
 .marca-nombre {

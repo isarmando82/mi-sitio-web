@@ -30,6 +30,19 @@
   margin-top: 0.5rem;
 }
 
+// Animación nativa: el botón principal del hero late tres veces al cargar,
+// con un halo dorado que se expande. Después queda quieto.
+.hero .btn-acento {
+  @include animar(
+    latir-acento,
+    $duracion: 2s,
+    $retardo: 1.4s,
+    $curva: ease-out,
+    $repeticiones: 3,
+    $modo: none
+  );
+}
+
 // ---------- Botón sólido dorado ----------
 .btn-acento {
   @extend %boton-base;
