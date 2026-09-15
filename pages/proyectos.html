@@ -15,6 +15,16 @@
   <!-- Bootstrap 5 por CDN (CSS antes de la hoja propia) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 
+  <!-- AOS (Animate On Scroll): libreria de animacion al hacer scroll -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css">
+
+  <!-- Sin JavaScript AOS no puede revelar los bloques: se muestran igual -->
+  <noscript>
+    <!-- El selector va duplicado a proposito: aos.css usa
+         [data-aos^="fade"][data-aos^="fade"] y hay que igualar su especificidad -->
+    <style>[data-aos][data-aos] { opacity: 1; transform: none; }</style>
+  </noscript>
+
   <link rel="stylesheet" href="../styles/style.css">
 
   <!-- Favicon del sitio -->
@@ -59,7 +69,7 @@
   <main class="contenido grilla-proyectos-pagina">
 
     <!-- Presentación de la página (área del grid: intro) -->
-    <section class="seccion area-intro">
+    <section class="seccion area-intro" data-aos="fade-right">
       <h1 class="titulo-principal titulo-oscuro">Proyectos</h1>
       <p class="texto texto-intro">
         Estos son algunos de los proyectos en los que trabajé mientras aprendía
@@ -72,7 +82,7 @@
 
     <!-- COMPONENTE DE BOOTSTRAP 1: Carousel de la galería de proyectos
          (área del grid: figura) -->
-    <section class="seccion area-figura">
+    <section class="seccion area-figura" data-aos="fade-left" data-aos-delay="100">
       <div id="carruselProyectos" class="carousel slide carrusel-personal" data-bs-ride="carousel">
 
         <div class="carousel-indicators">
@@ -116,12 +126,12 @@
 
     <!-- COMPONENTE DE BOOTSTRAP 2: Cards + grid system (row / col) + badges
          (área del grid: proyectos) -->
-    <div class="area-proyectos">
+    <div class="area-proyectos" data-aos="fade-up">
       <h2 class="titulo-seccion">Mis trabajos</h2>
 
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 fila-proyectos">
 
-        <div class="col">
+        <div class="col" data-aos="fade-up">
           <article class="card tarjeta-bs h-100">
             <img src="../img/galeria-1.svg" class="card-img-top" width="800" height="400"
                  alt="Ventana de código que representa el sitio web personal">
@@ -144,7 +154,7 @@
           </article>
         </div>
 
-        <div class="col">
+        <div class="col" data-aos="fade-up" data-aos-delay="150">
           <article class="card tarjeta-bs h-100">
             <img src="../img/servicios.svg" class="card-img-top" width="800" height="400"
                  alt="Engranajes dorados y azules que representan una aplicación de tareas">
@@ -167,7 +177,7 @@
           </article>
         </div>
 
-        <div class="col">
+        <div class="col" data-aos="fade-up" data-aos-delay="300">
           <article class="card tarjeta-bs h-100">
             <img src="../img/galeria-2.svg" class="card-img-top" width="800" height="400"
                  alt="Grilla de bloques que representa una maquetación responsive">
@@ -276,6 +286,10 @@
 
   <!-- Bootstrap 5: JS antes de cerrar el body (hamburguesa, carousel y modales) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AOS: libreria de animacion + su inicializacion -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+  <script src="../js/animaciones.js"></script>
 
 </body>
 </html>

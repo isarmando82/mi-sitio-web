@@ -15,6 +15,16 @@
   <!-- Bootstrap 5 por CDN (CSS antes de la hoja propia) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 
+  <!-- AOS (Animate On Scroll): libreria de animacion al hacer scroll -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css">
+
+  <!-- Sin JavaScript AOS no puede revelar los bloques: se muestran igual -->
+  <noscript>
+    <!-- El selector va duplicado a proposito: aos.css usa
+         [data-aos^="fade"][data-aos^="fade"] y hay que igualar su especificidad -->
+    <style>[data-aos][data-aos] { opacity: 1; transform: none; }</style>
+  </noscript>
+
   <link rel="stylesheet" href="../styles/style.css">
 
   <!-- Favicon del sitio -->
@@ -54,7 +64,7 @@
   </header>
 
   <main class="contenido">
-    <section class="seccion">
+    <section class="seccion" data-aos="fade-up">
       <h1 class="titulo-principal titulo-oscuro">Sobre mí</h1>
       <p class="texto texto-intro">
         Soy Ismael Armando, estudiante de desarrollo web. Me interesa crear sitios
@@ -65,7 +75,7 @@
     <!-- Grid: relato y figura apilados en celular, lado a lado desde 768px -->
     <div class="grilla-dos">
 
-      <article class="tarjeta">
+      <article class="tarjeta" data-aos="fade-right">
         <h2 class="titulo-seccion">Mi recorrido</h2>
         <p class="texto">
           Comencé estudiando los fundamentos de HTML y CSS, y hoy me enfoco en escribir
@@ -87,7 +97,7 @@
         </div>
       </article>
 
-      <figure class="figura">
+      <figure class="figura" data-aos="fade-left" data-aos-delay="100">
         <img class="figura-imagen" src="../img/sobre-mi.svg" width="800" height="400"
              alt="Retrato ilustrado de perfil con un círculo dorado sobre fondo azul">
         <figcaption class="figura-pie">Ilustración que representa mi perfil personal.</figcaption>
@@ -110,6 +120,10 @@
 
   <!-- Bootstrap 5: JS antes de cerrar el body (hace funcionar la hamburguesa) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AOS: libreria de animacion + su inicializacion -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+  <script src="../js/animaciones.js"></script>
 
 </body>
 </html>
