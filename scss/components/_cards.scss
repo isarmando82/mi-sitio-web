@@ -7,13 +7,19 @@
 @use '../utilities/variables' as *;
 @use '../utilities/mixins' as *;
 
+// Superficie común de las dos tarjetas. Como es un placeholder, con @extend
+// las dos comparten una sola regla en el CSS compilado en lugar de repetirla.
+%tarjeta-superficie {
+  @include superficie;
+  @include transicion(transform, box-shadow, border-color);
+}
+
 // ---------- Tarjeta propia ----------
 .tarjeta {
+  @extend %tarjeta-superficie;
   @include columna($espacio-minimo);
-  @include superficie;
   padding: $espacio-medio;
   height: 100%; // todas las tarjetas de una fila quedan parejas
-  @include transicion(transform, box-shadow, border-color);
 
   // Dentro de una tarjeta el título va más chico que el de una sección
   .titulo-seccion {
@@ -22,9 +28,7 @@
 
   &:hover,
   &:focus-within {
-    transform: translateY(-4px);
-    border-color: $color-acento;
-    box-shadow: $sombra-elevada;
+    @include elevar(-4px, $sombra-elevada);
   }
 }
 
@@ -43,9 +47,8 @@
 }
 
 .tarjeta-bs {
-  @include superficie;
+  @extend %tarjeta-superficie;
   overflow: hidden;
-  @include transicion(transform, box-shadow, border-color);
 
   // La imagen escala por ancho: height auto evita que quede estirada
   .card-img-top {
@@ -65,9 +68,7 @@
 
   &:hover,
   &:focus-within {
-    transform: translateY(-6px);
-    border-color: $color-acento;
-    box-shadow: $sombra-elevada-fuerte;
+    @include elevar(-6px, $sombra-elevada-fuerte);
   }
 
   &:active {
