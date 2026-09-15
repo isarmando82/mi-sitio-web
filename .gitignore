@@ -22,5 +22,12 @@ $RECYCLE.BIN/
 *.rar
 *.7z
 
-# --- Dependencias (por si mas adelante se suma alguna herramienta) ---
+# --- Dependencias y herramientas ---
 node_modules/
+package-lock.json
+
+# --- Sass ---
+# El CSS compilado (styles/style.css) SI se versiona: GitHub Pages
+# publica archivos estaticos y no compila SCSS por su cuenta.
+.sass-cache/
+*.css.map
