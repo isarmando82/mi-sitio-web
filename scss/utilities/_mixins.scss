@@ -32,6 +32,37 @@
   transition-timing-function: ease;
 }
 
+// ---------- Animación con parámetros ----------
+// Uso: @include animar(aparecer-arriba, $retardo: 0.2s);
+// Todo se declara dentro de prefers-reduced-motion: no-preference, así quien
+// pidió menos movimiento en su sistema operativo directamente no recibe la
+// animación (no hay que apagarla después con !important).
+@mixin animar(
+  $nombre,
+  $duracion: 0.6s,
+  $retardo: 0s,
+  $curva: ease-out,
+  $repeticiones: 1,
+  $modo: both
+) {
+  @media (prefers-reduced-motion: no-preference) {
+    animation-name: $nombre;
+    animation-duration: $duracion;
+    animation-delay: $retardo;
+    animation-timing-function: $curva;
+    animation-iteration-count: $repeticiones;
+    animation-fill-mode: $modo;
+  }
+}
+
+// ---------- Elevación al pasar el mouse ----------
+// Uso: @include elevar(-6px, $sombra-elevada-fuerte);
+@mixin elevar($desplazamiento: -4px, $sombra: $sombra-elevada) {
+  transform: translateY($desplazamiento);
+  border-color: $color-acento;
+  box-shadow: $sombra;
+}
+
 // ---------- Contenedor flexible en columna ----------
 @mixin columna($separacion: $espacio-medio) {
   display: flex;

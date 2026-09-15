@@ -1,0 +1,67 @@
+// ============================================================
+//  base/_animaciones.scss
+//  Animaciones nativas del sitio: los @keyframes propios y los
+//  ajustes sobre la librería AOS.
+//
+//  Los keyframes se declaran acá una sola vez y los partials los
+//  usan con el mixin animar(), que ya contempla
+//  prefers-reduced-motion.
+// ============================================================
+
+@use '../utilities/variables' as *;
+
+// ---------- Entrada desde abajo ----------
+// Aparece con un desplazamiento corto. Es la animación de carga
+// del hero y de sus elementos, escalonada con retardos.
+@keyframes aparecer-arriba {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ---------- Bajada del encabezado ----------
+@keyframes bajar-encabezado {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+// ---------- Latido del botón principal ----------
+// Un halo dorado que se expande y se desvanece: llama la atención
+// sobre la acción principal sin mover nada de lugar.
+@keyframes latir-acento {
+  0% {
+    box-shadow: 0 0 0 0 rgba($color-acento, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 0.75rem rgba($color-acento, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba($color-acento, 0);
+  }
+}
+
+// ---------- Flotación del logo ----------
+@keyframes flotar {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+// ---------- Nota sobre AOS ----------
+// Las animaciones al hacer scroll las aporta AOS: los elementos que
+// se animan llevan data-aos en el HTML y la configuración (duración,
+// curva, offset) vive en js/animaciones.js. No se las pisa desde acá
+// porque aos.css duplica sus selectores para ganar especificidad.
