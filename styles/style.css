@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+html,
+.pagina {
+  overflow-x: hidden;
+}
+
 .pagina {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
@@ -58,7 +63,7 @@
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 1.1rem;
-  color: #4a7fb5;
+  color: #3d6a99;
 }
 
 .texto {
@@ -91,7 +96,7 @@
 }
 
 .enlace {
-  color: #4a7fb5;
+  color: #3d6a99;
   font-weight: 600;
   text-decoration: none;
   transition-property: color;
@@ -103,7 +108,7 @@
   text-decoration: underline;
 }
 .enlace:active {
-  color: #4a7fb5;
+  color: #3d6a99;
 }
 
 @keyframes aparecer-arriba {
@@ -357,7 +362,7 @@
   color: #f2a900;
 }
 .marca:active .marca-nombre {
-  color: #4a7fb5;
+  color: #3d6a99;
 }
 
 .marca-logo {
@@ -407,7 +412,7 @@
   border-bottom-color: #f2a900;
 }
 .nav-enlace:active {
-  color: #4a7fb5;
+  color: #3d6a99;
 }
 
 .navbar-personal .navbar-nav .nav-link {
@@ -436,7 +441,7 @@
 }
 .navbar-personal .navbar-nav .nav-link:active {
   color: #ffffff;
-  background-color: #4a7fb5;
+  background-color: #3d6a99;
   border-bottom-color: #ffffff;
 }
 .navbar-personal .navbar-toggler {
@@ -515,7 +520,7 @@
   margin-top: 0.6rem;
   font-size: 0.9rem;
   font-style: italic;
-  color: #4a7fb5;
+  color: #3d6a99;
   text-align: center;
 }
 
@@ -592,8 +597,8 @@
 }
 .btn-contorno:active {
   color: #ffffff;
-  background-color: #4a7fb5;
-  border-color: #4a7fb5;
+  background-color: #3d6a99;
+  border-color: #3d6a99;
   transform: translateY(2px);
 }
 
@@ -628,7 +633,7 @@
   padding-top: 0.6rem;
   border-top: 1px solid #e2e8f0;
   font-size: 0.9rem;
-  color: #4a7fb5;
+  color: #3d6a99;
 }
 
 .fila-proyectos {
@@ -692,7 +697,7 @@
 .carrusel-personal .carousel-control-next:active .carousel-control-prev-icon,
 .carrusel-personal .carousel-control-next:active .carousel-control-next-icon {
   transform: scale(0.9);
-  background-color: #4a7fb5;
+  background-color: #3d6a99;
 }
 .carrusel-personal .carousel-indicators [data-bs-target] {
   width: 12px;
@@ -795,7 +800,7 @@
 }
 .acordeon-personal .accordion-button:active {
   color: #ffffff;
-  background-color: #4a7fb5;
+  background-color: #3d6a99;
 }
 
 .modal-personal .modal-content {
@@ -837,7 +842,7 @@
 }
 .lista-personal .list-group-item:active {
   color: #ffffff;
-  background-color: #4a7fb5;
+  background-color: #3d6a99;
 }
 
 .formulario-personal .form-label {
@@ -853,7 +858,7 @@
   transition-timing-function: ease;
 }
 .formulario-personal .form-control:hover {
-  border-color: #4a7fb5;
+  border-color: #3d6a99;
 }
 .formulario-personal .form-control:focus {
   border-color: #f2a900;
