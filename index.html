@@ -5,8 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#1f3a5f">
   <meta name="author" content="Ismael Armando">
-  <meta name="description" content="Sitio web personal de Ismael Armando: página de inicio.">
-  <title>Inicio | Ismael Armando</title>
+
+  <!-- SEO on-page: título, descripción y keywords propios de esta página -->
+  <title>Ismael Armando | Desarrollador web front-end en Buenos Aires</title>
+  <meta name="description" content="Sitio web personal de Ismael Armando, desarrollador web front-end en Buenos Aires. Maquetado con HTML5 semántico, CSS Grid, Flexbox, Bootstrap y SCSS.">
+  <meta name="keywords" content="desarrollador web front-end, HTML5 semántico, CSS Grid, Flexbox, Bootstrap 5, SCSS, diseño responsive, sitio web personal, Buenos Aires, Ismael Armando">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://isarmando82.github.io/mi-sitio-web/">
+
+  <!-- SEO off-page: cómo se ve la página al compartirla en redes -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:site_name" content="Ismael Armando | Desarrollo web">
+  <meta property="og:title" content="Ismael Armando | Desarrollador web front-end en Buenos Aires">
+  <meta property="og:description" content="Sitio web personal de Ismael Armando, desarrollador web front-end en Buenos Aires. Maquetado con HTML5 semántico, CSS Grid, Flexbox, Bootstrap y SCSS.">
+  <meta property="og:url" content="https://isarmando82.github.io/mi-sitio-web/">
+  <meta property="og:image" content="https://isarmando82.github.io/mi-sitio-web/img/portada-desarrollo-web-ismael-armando.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ismael Armando | Desarrollador web front-end en Buenos Aires">
+  <meta name="twitter:description" content="Sitio web personal de Ismael Armando, desarrollador web front-end en Buenos Aires. Maquetado con HTML5 semántico, CSS Grid, Flexbox, Bootstrap y SCSS.">
+  <meta name="twitter:image" content="https://isarmando82.github.io/mi-sitio-web/img/portada-desarrollo-web-ismael-armando.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,6 +47,35 @@
   <!-- Hoja de estilos propia: personaliza los componentes de Bootstrap
        con la paleta azul + dorado del sitio -->
   <link rel="stylesheet" href="styles/style.css">
+
+  <!-- SEO técnico: datos estructurados para que el buscador entienda
+       de quién es el sitio (schema.org / JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ismael Armando",
+    "jobTitle": "Desarrollador web front-end",
+    "url": "https://isarmando82.github.io/mi-sitio-web/",
+    "image": "https://isarmando82.github.io/mi-sitio-web/img/portada-desarrollo-web-ismael-armando.svg",
+    "email": "mailto:isarmando82@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Buenos Aires",
+      "addressCountry": "AR"
+    },
+    "knowsAbout": [
+      "HTML5 semántico",
+      "CSS Grid",
+      "Flexbox",
+      "Bootstrap 5",
+      "SCSS",
+      "Diseño responsive",
+      "Accesibilidad web"
+    ],
+    "sameAs": ["https://github.com/isarmando82"]
+  }
+  </script>
 
   <!-- Favicon del sitio -->
   <link rel="icon" type="image/svg+xml" href="img/logo.svg">
@@ -74,7 +121,7 @@
 
     <!-- Sección de presentación destacada (área del grid: hero) -->
     <section class="seccion hero area-hero">
-      <h1 class="titulo-principal">Hola, soy Ismael Armando</h1>
+      <h1 class="titulo-principal">Hola, soy Ismael Armando, desarrollador web front-end</h1>
       <p class="texto texto-intro">
         Bienvenido a mi sitio web personal. Esta es la página de inicio: desde acá
         podés conocer mi perfil, mis servicios, mis proyectos y cómo contactarme.
@@ -185,7 +232,7 @@
         <div class="carousel-inner">
 
           <div class="carousel-item active">
-            <img src="img/galeria-1.svg" class="d-block w-100" width="800" height="400"
+            <img src="img/html5-semantico-estructura.svg" class="d-block w-100" width="800" height="400"
                  alt="Ventana de código con líneas azules y doradas que representan HTML semántico">
             <div class="carousel-caption">
               <h3 class="carrusel-titulo">HTML5 semántico</h3>
@@ -194,7 +241,7 @@
           </div>
 
           <div class="carousel-item">
-            <img src="img/galeria-2.svg" class="d-block w-100" width="800" height="400"
+            <img src="img/maquetacion-css-grid.svg" class="d-block w-100" width="800" height="400"
                  alt="Grilla de bloques blancos y dorados que representa un layout con CSS Grid">
             <div class="carousel-caption">
               <h3 class="carrusel-titulo">Maquetación con CSS Grid</h3>
@@ -203,7 +250,7 @@
           </div>
 
           <div class="carousel-item">
-            <img src="img/galeria-3.svg" class="d-block w-100" width="800" height="400"
+            <img src="img/diseno-responsive-mobile-first.svg" class="d-block w-100" width="800" height="400"
                  alt="El mismo sitio dibujado en escritorio, tablet y celular">
             <div class="carousel-caption">
               <h3 class="carrusel-titulo">Diseño responsive</h3>
@@ -231,7 +278,7 @@
     <section class="seccion area-figura" data-aos="fade-up">
       <h2 class="titulo-seccion">Una imagen de bienvenida</h2>
       <figure class="figura">
-        <img class="figura-imagen" src="img/portada.svg" width="800" height="400"
+        <img class="figura-imagen" src="img/portada-desarrollo-web-ismael-armando.svg" width="800" height="400"
              alt="Ilustración de bienvenida con un círculo dorado y las iniciales IA sobre fondo azul">
         <figcaption class="figura-pie">Ilustración de bienvenida de mi sitio web personal.</figcaption>
       </figure>
