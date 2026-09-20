@@ -16,6 +16,16 @@
 // ---------- Cuerpo de la página ----------
 // Estrategia mobile-first: este es el diseño base de celular.
 // La complejidad se suma después con @include desde(...).
+// AOS desplaza los bloques 100px en horizontal (fade-right / fade-left)
+// ANTES de animarlos. En celular ese desplazamiento asoma fuera de la
+// pantalla y genera scroll horizontal hasta que la animación entra.
+// Hay que recortarlo en html Y en body: si va solo en uno, el otro
+// sigue scrolleando igual.
+html,
+.pagina {
+  overflow-x: hidden;
+}
+
 .pagina {
   font-family: $fuente-cuerpo;
   font-weight: $peso-normal;
