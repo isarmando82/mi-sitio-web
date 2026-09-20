@@ -1,0 +1,27 @@
+# ============================================================
+#  .gitattributes
+#  Normaliza los finales de linea del proyecto.
+#
+#  El problema que resuelve: Windows usa CRLF y Linux/Mac usan LF.
+#  Sin esta regla, un archivo escrito en un sistema aparece como
+#  "modificado" en el otro aunque el contenido sea identico.
+#
+#  text=auto -> Git decide que archivos son texto.
+#  eol=lf    -> los guarda con LF en el repositorio Y en el disco,
+#               en cualquier sistema operativo.
+# ============================================================
+
+* text=auto eol=lf
+
+# ---------- Binarios: Git no los toca ----------
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
