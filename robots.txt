@@ -1,0 +1,7 @@
+# robots.txt — indicaciones para los buscadores
+# Todo el sitio es público y se puede indexar.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://isarmando82.github.io/mi-sitio-web/sitemap.xml
