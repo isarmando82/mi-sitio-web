@@ -7,7 +7,9 @@
 
 // ---------- Paleta ----------
 $color-primario: #1f3a5f; // azul oscuro: encabezado, pie y títulos
-$color-secundario: #4a7fb5; // azul medio: enlaces y detalles
+$color-secundario: #3d6a99; // azul medio: enlaces y detalles
+// Oscurecido desde #4a7fb5 para llegar al contraste AA de WCAG:
+// sobre blanco pasa de 4.20:1 (insuficiente) a 5.65:1.
 $color-acento: #f2a900; // dorado: acentos, hover y bordes
 $color-fondo: #f5f7fa; // fondo general claro
 $color-superficie: #ffffff; // fondo de tarjetas
