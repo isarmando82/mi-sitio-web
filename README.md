@@ -26,7 +26,9 @@ mi-sitio-web/
 │   └── style.css       # CSS compilado — no se edita a mano
 ├── js/
 │   └── animaciones.js  # Inicialización de AOS
-├── img/                # Imágenes representativas (.svg)
+├── img/                # Imágenes con nombres descriptivos (.svg)
+├── robots.txt          # Indicaciones para los buscadores
+├── sitemap.xml         # Mapa del sitio con las 5 páginas
 ├── package.json        # Script de compilación de Sass
 ├── .gitignore          # Archivos que Git ignora
 └── README.md
@@ -45,7 +47,7 @@ igual clonado en cualquier máquina que servido desde GitHub Pages.
 - Etiquetas semánticas: `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<figure>`, `<footer>`.
 - Hoja de estilos externa vinculada con `<link>` en los 5 archivos (sin estilos en línea).
 - Estilos aplicados solo con **clases** (sin IDs y sin `!important`).
-- Paleta de 3 colores en HEX: primario `#1f3a5f`, secundario `#4a7fb5`, acento `#f2a900`.
+- Paleta de 3 colores en HEX: primario `#1f3a5f`, secundario `#3d6a99`, acento `#f2a900`.
 - Tipografías de Google Fonts: **Poppins** (títulos) y **Open Sans** (cuerpo), con fallback `sans-serif`.
 - Jerarquía visual clara y diseño adaptable a móviles.
 
@@ -242,6 +244,84 @@ que las dos no se pisen.
   (`[data-aos][data-aos]`) para igualar la especificidad que usa la librería.
   Verificado: con JavaScript desactivado las 5 páginas se ven completas.
 
+## SEO y accesibilidad
+
+### Meta etiquetas por página
+
+Cada uno de los 5 HTML tiene su propio `<title>`, `meta description` y
+`meta keywords`, escritos a partir del contenido real de esa página —no una
+plantilla repetida—, más `robots` y `canonical`:
+
+| Página | `<title>` | Largo de la description |
+|---|---|---|
+| `index.html` | Ismael Armando \| Desarrollador web front-end en Buenos Aires | 150 car. |
+| `pages/sobre-mi.html` | Sobre mí \| Ismael Armando, desarrollador web front-end | 141 car. |
+| `pages/servicios.html` | Servicios de maquetado web y estilización CSS \| Ismael Armando | 141 car. |
+| `pages/proyectos.html` | Proyectos de desarrollo web front-end \| Ismael Armando | 141 car. |
+| `pages/contacto.html` | Contacto \| Ismael Armando, desarrollador web front-end | 156 car. |
+
+Las descripciones quedan entre 140 y 156 caracteres, que es lo que Google
+alcanza a mostrar sin cortar.
+
+### Keywords
+
+Entre 7 y 10 términos por página, tomados del contenido que efectivamente está
+en esa página. No hay *keyword stuffing*: las palabras que aparecen en la meta
+también aparecen en los títulos, los textos y los `alt` de las imágenes.
+
+### SEO off-page y técnico
+
+- **Open Graph y Twitter Cards** en las 5 páginas, para que el enlace se vea
+  bien al compartirlo.
+- **`robots.txt`** permitiendo la indexación y apuntando al sitemap.
+- **`sitemap.xml`** con las 5 URLs, su fecha y su prioridad.
+- **Datos estructurados JSON-LD** (`schema.org/Person`) en el inicio, con
+  nombre, rol, ubicación y tecnologías.
+- **`canonical`** en cada página, para que no se dupliquen versiones.
+
+### Nombres de archivo
+
+Las imágenes con nombre genérico se renombraron según lo que muestran:
+
+| Antes | Después |
+|---|---|
+| `galeria-1.svg` | `html5-semantico-estructura.svg` |
+| `galeria-2.svg` | `maquetacion-css-grid.svg` |
+| `galeria-3.svg` | `diseno-responsive-mobile-first.svg` |
+| `portada.svg` | `portada-desarrollo-web-ismael-armando.svg` |
+
+### Semántica
+
+Un solo `<h1>` por página y jerarquía de títulos sin saltos (verificado en las
+5). La estructura se apoya en `<header>`, `<nav>`, `<main>`, `<section>`,
+`<article>`, `<figure>` y `<footer>`. Los `<div>` que quedan son los que pide
+Bootstrap (carousel, grid system, cards, modales) o contenedores de grilla con
+función real.
+
+### Accesibilidad
+
+- **Texto alternativo**: las 18 imágenes del sitio tienen `alt` descriptivo.
+- **Contraste**: todas las combinaciones de texto y fondo superan el mínimo
+  AA de WCAG (4.5:1). El azul medio se oscureció de `#4a7fb5` a `#3d6a99`
+  porque sobre blanco daba 4.20:1; ahora da 5.65:1.
+
+| Combinación | Contraste |
+|---|---|
+| Texto sobre el fondo general | 14.10:1 |
+| Texto sobre tarjeta blanca | 15.14:1 |
+| Título de sección sobre el fondo | 10.70:1 |
+| Enlaces y subtítulos sobre tarjeta | 5.65:1 |
+| Blanco sobre el azul del hero | 11.48:1 |
+| Dorado sobre la navbar azul | 5.71:1 |
+| Texto del botón dorado | 7.53:1 |
+
+- **Navegación por teclado**: `:focus-visible` con contorno dorado en todos los
+  elementos clicables.
+- **Movimiento**: las animaciones respetan `prefers-reduced-motion`.
+- **Sin scroll horizontal** en ningún ancho: `html` y `body` recortan el
+  desbordamiento que provocan los desplazamientos laterales de AOS mientras el
+  bloque todavía no entró en pantalla.
+
 ## Maquetación con CSS Grid y responsividad
 
 - **Mobile-first**: el diseño base (sin media queries) es de una sola columna;
@@ -387,6 +467,7 @@ Para ver el menú hamburguesa, achicá la ventana por debajo de los 992px.
 | 6 | Estructura avanzada y control de versiones | Control de versiones con Git y GitHub |
 | 7 | Arquitectura SCSS y refactorización | Arquitectura SCSS |
 | 8 | Animaciones y full-responsive | Animaciones |
+| 9 | SEO y servidores | SEO y accesibilidad |
 
 ---
 
