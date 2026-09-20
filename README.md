@@ -1,6 +1,7 @@
 # Mi Sitio Web Personal
 
-🔗 **Sitio publicado:** https://isarmando82.github.io/mi-sitio-web/
+🔗 **Sitio publicado:** https://isarmando82.github.io/mi-sitio-web/ (GitHub Pages)
+🚀 **Espejo en Vercel:** https://mi-sitio-web-ecru.vercel.app
 📦 **Repositorio:** https://github.com/isarmando82/mi-sitio-web
 
 Sitio web personal construido con **HTML5 semántico** y estilizado con **SCSS**
@@ -437,12 +438,22 @@ comprimidos de entrega (`*.zip`).
 además las ramas históricas `entrega-2`, `entrega-3` y `entrega-4`, que
 conservan el estado del proyecto en cada módulo.
 
-### Publicación con GitHub Pages
+### Publicación: dos servidores desde el mismo repositorio
 
-El sitio se despliega desde la rama `main`, carpeta raíz (`/root`), en
-**Settings → Pages**. Cada `push` a `main` vuelve a publicar automáticamente:
+El sitio está desplegado en dos lados, y **los dos se actualizan solos con cada
+`push` a `main`**:
 
-👉 https://isarmando82.github.io/mi-sitio-web/
+| Servidor | URL | Configuración |
+|---|---|---|
+| **GitHub Pages** | https://isarmando82.github.io/mi-sitio-web/ | Settings → Pages, rama `main`, carpeta raíz (`/root`) |
+| **Vercel** | https://mi-sitio-web-ecru.vercel.app | Proyecto importado desde GitHub, preset `Other`, sin build command |
+
+Vercel no necesita paso de construcción: el sitio es HTML, CSS y JavaScript
+estáticos, y `styles/style.css` ya viaja compilado en el repositorio.
+
+GitHub Pages es la **versión de referencia**: el `canonical` de las 5 páginas
+apunta ahí, así los buscadores no interpretan las dos URLs como contenido
+duplicado.
 
 ## Cómo verlo
 
