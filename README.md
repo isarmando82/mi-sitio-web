@@ -27,7 +27,7 @@ mi-sitio-web/
 │   └── style.css       # CSS compilado — no se edita a mano
 ├── js/
 │   └── animaciones.js  # Inicialización de AOS
-├── img/                # Imágenes con nombres descriptivos (.svg)
+├── assets/             # Multimedia: imágenes e íconos con nombres descriptivos (.svg)
 ├── robots.txt          # Indicaciones para los buscadores
 ├── sitemap.xml         # Mapa del sitio con las 5 páginas
 ├── package.json        # Script de compilación de Sass
@@ -37,8 +37,8 @@ mi-sitio-web/
 
 `index.html` vive en la **raíz** del repositorio (requisito de GitHub Pages) y
 **todas las rutas son relativas**: desde la raíz se apunta como
-`styles/style.css`, `img/logo.svg` y `pages/servicios.html`; desde `pages/` se
-sube un nivel con `../styles/style.css`, `../img/logo.svg` y `../index.html`.
+`styles/style.css`, `assets/logo.svg` y `pages/servicios.html`; desde `pages/` se
+sube un nivel con `../styles/style.css`, `../assets/logo.svg` y `../index.html`.
 No hay ninguna ruta absoluta ni ruta de disco local, así que el sitio funciona
 igual clonado en cualquier máquina que servido desde GitHub Pages.
 
@@ -158,6 +158,30 @@ definen una sola vez en un mapa y los partials los piden por nombre.
 
   @include desde('tablet') { grid-template-columns: repeat(2, 1fr); }
   @include desde('escritorio') { grid-template-columns: repeat(3, 1fr); }
+}
+```
+
+### Placeholders y `@extend`
+
+Los estilos que comparten varias clases se escriben una sola vez en un
+**placeholder** (`%`), que no genera CSS por sí mismo, y cada clase lo hereda
+con `@extend`:
+
+| Placeholder | Lo heredan |
+|---|---|
+| `%boton-base` | `.btn-acento` y `.btn-contorno` |
+| `%tarjeta-superficie` | `.tarjeta` (tarjetas propias) y `.tarjeta-bs` (cards de Bootstrap) |
+
+```scss
+%boton-base {
+  font-family: $fuente-titulos;
+  font-weight: $peso-semi;
+  border-radius: $radio-chico;
+}
+
+.btn-acento {
+  @extend %boton-base;
+  background-color: $color-acento;
 }
 ```
 
@@ -375,7 +399,7 @@ el **menú hamburguesa** (`navbar-toggler` + `collapse navbar-collapse`).
 Ningún componente queda con la estética por defecto de Bootstrap: los partials
 de `scss/components/` repintan navbar, carousel, accordion, cards, badges, modales,
 list-group, alert y formulario con la paleta del sitio (azul `#1f3a5f`,
-azul medio `#4a7fb5` y dorado `#f2a900`) y las tipografías Poppins / Open Sans.
+azul medio `#3d6a99` y dorado `#f2a900`) y las tipografías Poppins / Open Sans.
 Incluso el ícono de la hamburguesa y la flecha del accordion se redibujan en
 dorado.
 
@@ -479,6 +503,7 @@ Para ver el menú hamburguesa, achicá la ventana por debajo de los 992px.
 | 7 | Arquitectura SCSS y refactorización | Arquitectura SCSS |
 | 8 | Animaciones y full-responsive | Animaciones |
 | 9 | SEO y servidores | SEO y accesibilidad |
+| Final | Proyecto integrador: estructura final con `assets/` y revisión completa | Estructura del proyecto |
 
 ---
 
